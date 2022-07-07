@@ -1,8 +1,8 @@
 {
   "name": "bean-oi",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "tiki": {
-    "appIdentifier": "com.reso.beanoi",
+    "appIdentifier": "vn.tiki.miniapp.beanoi",
     "buildNumber": 1,
     "metadata": {
       "permissions": [
