@@ -1,14 +1,41 @@
 <template name="DEFAULT">
   <view class="c-header">
-    <view class="header flex items-center p-medium">
-      <view class="mr-small">
+    <view class="header items-center p-medium">
+      <!-- <view class="mr-small">
         <view class="img-container">
-          <image src="/assets/logo.png" />
+          <image src="/assets/location_icon.png" />
         </view>
-      </view>
+      </view> -->
       <view>
-        <view class="text-small font-regular text-gray80">Welcome to</view>
-        <view class="font-bold text-gray100">Sample Restaurant</view>
+        <view class=" flex items-center">
+          <view class="mr-small">
+            <view class="img-container">
+              <image src="/assets/location_icon.png" />
+            </view>
+          </view>
+          <view class=" fo nt-regular text-gray80 mr-small">Nơi nhận : </view>
+          <view class="font-bold text-gray100">{{stores.locations[0].address}} </view>
+        </view>
+        <view class=" flex items-center">
+          <view class="mr-small">
+            <view class="img-container">
+              <image src="/assets/clock_icon.png" />
+            </view>
+          </view>
+          <view class=" fo nt-regular text-gray80 mr-small">Giờ giao hàng : </view>
+          <!-- <view class="font-bold text-gray100">Đại học FPT </view> -->
+        </view>
+
+        <view class="w-100">
+          <view class="flex time-container pl-medium border-box hide-scroll">
+            <view tiki:for="{{stores.time_slots}}"
+              class="border border-solid border-gray40 radius-16px mr-2x-small time-select {{selected.time === item ? 'active' : ''}}"
+              onTap="onTimeSelect" data-time="{{item}}">
+              {{item.arrive_time_range[0].substring(0,5)}} {{item.arrive_time_range[1].substring(0,5)}}
+            </view>
+          </view>
+        </view>
+
       </view>
     </view>
   </view>
@@ -26,4 +53,4 @@
   </view>
 </template>
 
-<template is="{{type}}" />
+<template is="{{type}}" data="{{stores}}" />

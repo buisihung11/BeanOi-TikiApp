@@ -1,8 +1,9 @@
 Component({
   props: {
-    headerType: '',
+    headerType: "",
+    stores: "",
     banners: [],
-    status: '',
+    status: "",
     campaigns: [],
   },
 });

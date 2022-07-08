@@ -1,5 +1,5 @@
 <view>
-  <header type="{{headerType}}" />
+  <header type="{{headerType}}", stores="{{stores}}" />
   <banner status="{{status}}"
           banners="{{banners}}" />
   <view class="mt-large px-medium">
