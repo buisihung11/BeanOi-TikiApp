@@ -4,28 +4,36 @@ import { $page } from "@tiki.vn/redux-miniprogram-bindings";
 import { getAllStore, changeDefaultStore } from "../../store/actions/store";
 import { navigateTo } from "../../helper";
 // Page
-Page({
+$page({
+  mapState: [
+    (state) => ({
+      stores: state.store.list,
+    }),
+  ],
+  mapDispatch: { getAllStore, changeDefaultStore },
+})({
   data: {
     status: 'LOADING',
     headerType: 'DEFAULT',
     campaigns: [1, 2, 3, 4],
     banners: [1, 2, 3],
-    stores: [],
+
   },
   async loadData() {
     try {
-      const [banners, campaigns, stores] = await Promise.all([
+      const [banners, campaigns] = await Promise.all([
         getData('banners'),
         getData('campaigns'),
-         getData('stores')
+   
       ]);
-
+      await this.getAllStore();     
       this.setData({
         ...this.data,
         banners,
         campaigns,
         status: 'SUCCESS',
-        stores,
+        stores: this.data.stores.data,
+
       });
     } catch (err) {
       this.setData({
@@ -50,5 +58,10 @@ Page({
         ...this.data,
         headerType: 'SCROLLED',
       });
+  },
+  onStoreSelect(e) {
+    const id = e.target.dataset.id;
+    this.changeDefaultStore(id);
+    navigateTo("store-detail", { id });
   },
 });

@@ -1,7 +1,4 @@
 
-import { changeDefaultStore } from "../../../../store/actions/store";
-import { navigateTo } from "../../../../helper";
-
 Component({
   props: {
     headerType: '',
@@ -10,12 +7,12 @@ Component({
     campaigns: [],
     stores: [],
   },
-  methods:{
-    onStoreSelect(e) {
-      const id = e.target.dataset.id;
-      changeDefaultStore(id);
-      navigateTo("store-detail", { id });
-    },
-  }
+  // methods:{
+  //   onStoreSelect(e) {
+  //     const id = e.target.dataset.id;
+  //     changeDefaultStore(id);
+  //     navigateTo("store-detail", { id });
+  //   },
+  // }
 }
 );

@@ -5,7 +5,7 @@
     "header": "pages/home/child/header",
     "banner": "pages/home/child/banner",
     "order-methods": "components/order-methods",
-    "campaigns-list": "pages/home/child/campaigns-list",
-    "stores-list": "components/stores-list"
+    "campaigns-list": "pages/home/child/campaigns-list"
+    
   }
 }
