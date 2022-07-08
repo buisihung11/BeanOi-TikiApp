@@ -19,7 +19,9 @@
     "pages/reservations",
     "pages/reservation-detail",
     "pages/online-reservation",
-    "pages/reservation-review"
+    "pages/reservation-review",
+    "pages/gift/index",
+    "pages/gift-list/index"
   ],
   "window": {
     "titleBarBottomColor": "#fff"
@@ -33,10 +35,10 @@
         "pagePath": "pages/home/index"
       },
       {
-        "name": "Store",
-        "icon": "assets/store.png",
-        "activeIcon": "assets/store_active.png",
-        "pagePath": "pages/stores-list/index"
+        "name": "Gift",
+        "icon": "assets/gift.png",
+        "activeIcon": "assets/gift_active.png",
+        "pagePath": "pages/gift/index"
       },
       {
         "name": "Order",
