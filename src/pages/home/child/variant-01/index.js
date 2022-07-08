@@ -9,7 +9,7 @@ Component({
     banners: [],
     status: "",
     campaigns: [],
-    stores: [],
+    suppliers: [],
   },
   methods:{
     onStoreSelect(e) {

@@ -10,6 +10,6 @@
   <!-- <campaigns-list status="{{status}}"
                   campaigns="{{campaigns}}" /> -->
    <stores-list status="{{status}}"
-   stores="{{stores}}"
+   suppliers="{{suppliers}}"
    onSelect="onStoreSelect" />
 </view>

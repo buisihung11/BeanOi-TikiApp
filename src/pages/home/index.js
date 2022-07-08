@@ -1,6 +1,6 @@
 import { getData } from "../../services";
-import  apiStores  from "../../services/stores";
-import { getData } from '../../services';
+import apiStores from "../../services/stores";
+import apiSuppliers from "../../services/supplier";
 import { $page } from "@tiki.vn/redux-miniprogram-bindings";
 
 import { getAllStore, changeDefaultStore } from "../../store/actions/store";
@@ -12,25 +12,28 @@ Page({
     headerType: "DEFAULT",
     campaigns: [1, 2, 3, 4],
     banners: [1, 2, 3],
-    stores: [],
+    stores: "",
+    suppliers: [],
   },
   async loadData() {
     try {
-      const [banners, campaigns, stores] = await Promise.all([
-        getData('banners'),
-        getData('campaigns'),
-         getData('stores')
+      const [banners, campaigns] = await Promise.all([
+        getData("banners"),
+        getData("campaigns"),
       ]);
       const stores = await apiStores.getStores();
       console.log(stores);
-      console.log("adress", stores.locations[0].address)
+      console.log("adress", stores.locations[0].address);
+      const suppliers = await apiSuppliers.getSuppliers();
+      console.log("supplier", suppliers);
 
       this.setData({
         ...this.data,
         banners,
         campaigns,
-        status: 'SUCCESS',
+        status: "SUCCESS",
         stores,
+        suppliers
       });
     } catch (err) {
       console.log(err);
