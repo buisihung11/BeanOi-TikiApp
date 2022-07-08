@@ -5,8 +5,11 @@
   <view class="mt-large px-medium">
     <order-methods status="{{status}}" />
   </view>
-  <view class="font-bold ml-medium text-medium mt-large">Promotion campaign
-  </view>
-  <campaigns-list status="{{status}}"
-                  campaigns="{{campaigns}}" />
+  <!-- <view class="font-bold ml-medium text-medium mt-large"> Cửa hàng
+  </view> -->
+  <!-- <campaigns-list status="{{status}}"
+                  campaigns="{{campaigns}}" /> -->
+   <stores-list status="{{status}}"
+   stores="{{stores}}"
+   onSelect="onStoreSelect" />
 </view>
