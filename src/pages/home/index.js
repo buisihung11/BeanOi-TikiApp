@@ -1,20 +1,25 @@
 import { getData } from "../../services";
 import  apiStores  from "../../services/stores";
+import { getData } from '../../services';
+import { $page } from "@tiki.vn/redux-miniprogram-bindings";
 
+import { getAllStore, changeDefaultStore } from "../../store/actions/store";
+import { navigateTo } from "../../helper";
+// Page
 Page({
   data: {
     status: "LOADING",
     headerType: "DEFAULT",
     campaigns: [1, 2, 3, 4],
     banners: [1, 2, 3],
-    stores: '',
+    stores: [],
   },
   async loadData() {
     try {
-      const [banners, campaigns] = await Promise.all([
-        getData("banners"),
-        getData("campaigns"),
-
+      const [banners, campaigns, stores] = await Promise.all([
+        getData('banners'),
+        getData('campaigns'),
+         getData('stores')
       ]);
       const stores = await apiStores.getStores();
       console.log(stores);
@@ -24,8 +29,8 @@ Page({
         ...this.data,
         banners,
         campaigns,
+        status: 'SUCCESS',
         stores,
-        status: "SUCCESS",
       });
     } catch (err) {
       console.log(err);

@@ -33,7 +33,7 @@
         "pagePath": "pages/home/index"
       },
       {
-        "name": "Store",
+        "name": "Gift",
         "icon": "assets/store.png",
         "activeIcon": "assets/store_active.png",
         "pagePath": "pages/stores-list/index"

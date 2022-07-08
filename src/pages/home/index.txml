@@ -1,6 +1,13 @@
-<variant-01 banners="{{banners}}"
+<variant-01
+ banners="{{banners}}"
             campaigns="{{campaigns}}"
             status="{{status}}"
+<<<<<<< HEAD
             headerType="{{headerType}}"
             stores="{{stores}}" />
+=======
+            stores="{{stores}}"
+            headerType="{{headerType}}"
+             />
+>>>>>>> origin/feat/move-store-list-to-home
 <sticky-bottom />
