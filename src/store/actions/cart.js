@@ -1,6 +1,7 @@
 import { constants as c } from "../../constants";
 import { getDataInstant } from "../../services";
 import cartApi from "../../services/cart/index";
+import { navigateTo } from "../../helper";
 
 export const addCart = (data) => (dispatch) => {
   dispatch({
@@ -10,7 +11,7 @@ export const addCart = (data) => (dispatch) => {
   dispatch(prepareCart());
 };
 
-export const changeItemNumber = ( _id, value) => (dispatch) => {
+export const changeItemNumber = (_id, value) => (dispatch) => {
   dispatch({
     type: c.CHANGE_ITEM_NUMBER_IN_CART,
     _id,
@@ -56,10 +57,9 @@ export const changePickupTime = (time, date) => (dispatch) => {
   });
 };
 
-export const resetCart = (orderMethod) => (dispatch) => {
+export const resetCart = () => (dispatch) => {
   dispatch({
     type: c.RESET_CART,
-    orderMethod,
   });
 };
 
@@ -75,15 +75,44 @@ export const prepareCart = () => async (dispatch, getState) => {
   });
 };
 
+export const checkoutCart = () => async (dispatch, getState) => {
+  const state = getState();
+  const products = state.cart.products;
+  const req = buildCheckoutCart({ products });
+  // console.log(req);
+  const res = await cartApi.checkOut(req);
+  const orderId = res.orderId;
+  navigateTo("order-detail", { orderId });
+  dispatch(resetCart());
+  
+};
+
 const buildPrepareCart = (orderState) => {
   return {
     destination_location_id: 23,
     payment: 1,
     vouchers: [],
-    customer_info:{
-      name:"",
-      phone:"",
-      email:"",
+    customer_info: {
+      name: "",
+      phone: "",
+      email: "",
+    },
+    products_list: orderState.products.map((cartItem) => ({
+      master_product: cartItem.product.product_in_menu_id,
+      quantity: cartItem.number,
+    })),
+  };
+};
+
+const buildCheckoutCart = (orderState, customer) => {
+  return {
+    destination_location_id: 23,
+    payment: 1,
+    vouchers: [],
+    customer_info: {
+      name: "Duong Tan Minh",
+      phone: "0764420250",
+      email: "tnmnh1105@gmail.com",
     },
     products_list: orderState.products.map((cartItem) => ({
       master_product: cartItem.product.product_in_menu_id,

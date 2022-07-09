@@ -106,7 +106,7 @@
   <cart-action cart="{{cart}}"
                onResetCoupon="onResetCoupon"
                onShowCouponInput="onShowCouponInput"
-               onPay="onShowPaymentResultSelect" />
+               onCheckout="onCheckout" />
   <!-- <coupon-input isShow="{{isShowCouponInput}}"
                 onClose="onHideCouponInput"
                 onApplyCoupon="onApplyCoupon" /> -->

@@ -1,7 +1,7 @@
 Component({
   props: {
     onShowCouponInput() {},
-    onPay() {},
+    onCheckout() {},
   },
   onInit() {},
   methods: {
@@ -13,7 +13,8 @@ Component({
       this.props.onResetCoupon();
     },
     onCheckout() {
-      // this.props.onPay();
+       this.props.onCheckout();
+
       console.log(this.props.cart);
     },
   },

@@ -9,6 +9,7 @@ import {
   applyCoupon,
   changeItemNumber,
   changePickupTime,
+  checkoutCart
 } from "../../store/actions/cart";
 
 $page({
@@ -21,6 +22,7 @@ $page({
   ],
   mapDispatch: {
     resetCart,
+    checkoutCart,
     getBuyerInfo,
     getAllStore,
     applyCoupon,
@@ -134,4 +136,7 @@ $page({
   onShowTimeSelect() {
     this.setData({ isShowTimeSelect: true });
   },
+  onCheckout(){
+    this.checkoutCart(this.data.cart);
+  }
 });

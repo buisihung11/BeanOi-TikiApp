@@ -39,7 +39,7 @@ export default function cart(state = initialState, action) {
     case c.CHANGE_TIME_PICKUP:
       return handleChangePickupTime(state, action);
     case c.RESET_CART:
-      return handleResetCart(state, action.orderMethod);
+      return handleResetCart(state);
     case c.PREPARE_CART:
       return handlePrepareCart(state, action.data);
     default:
@@ -132,7 +132,7 @@ function handleChangePickupTime(curState, { time, date }) {
   return newState;
 }
 
-function handleResetCart(curState, orderMethod) {
+function handleResetCart(curState) {
   let newState = clone(curState);
   newState = initialState;
   return newState;

@@ -17,7 +17,7 @@ const prepareOrder = async (cart) => {
 
 const checkOut = async (cart) => {
   const res = await myx.request({
-    url: `${BASE_URL}/orders/checkout`,
+    url: `${BASE_URL}/orders`,
     headers: {
       "Content-type": "application/json",
     },
