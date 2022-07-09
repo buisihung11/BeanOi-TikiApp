@@ -2,37 +2,38 @@ import { getData } from "../../services";
 import apiStores from "../../services/stores";
 import apiSuppliers from "../../services/supplier";
 
+<<<<<<< HEAD
 
+=======
+import {
+  getAllLocations,
+  getAllStore,
+  changeDefaultStore,
+  setTimeSlotAction,
+} from "../../store/actions/store";
+import { navigateTo } from "../../helper";
+>>>>>>> master
 // Page
-Page({
-  data: {
-    status: "LOADING",
-    headerType: "DEFAULT",
-    campaigns: [1, 2, 3, 4],
-    banners: [1, 2, 3],
-    stores: "",
-    suppliers: [],
-  },
+$page({
+  mapState: [
+    (state) => ({
+      status: state.store.status,
+      headerType: "DEFAULT",
+      campaigns: [1, 2, 3, 4],
+      banners: [1, 2, 3],
+      selectedTimeSlot: state.store.selectedTimeSlot,
+      stores: state.store.stores,
+      locations: state.store.locations,
+      selectedLocation: state.store.selectedLocation,
+      suppliers: state.store.suppliers,
+    }),
+  ],
+  mapDispatch: { getAllStore, changeDefaultStore, getAllLocations },
+})({
   async loadData() {
     try {
-      const [banners, campaigns] = await Promise.all([
-        getData("banners"),
-        getData("campaigns"),
-      ]);
-      const stores = await apiStores.getStores();
-      console.log(stores);
-      console.log("adress", stores.locations[0].address);
-      const suppliers = await apiSuppliers.getSuppliers();
-      console.log("supplier", suppliers);
-
-      this.setData({
-        ...this.data,
-        banners,
-        campaigns,
-        status: "SUCCESS",
-        stores,
-        suppliers
-      });
+      await this.getAllStore();
+      await this.getAllLocations();
     } catch (err) {
       console.log(err);
       this.setData({

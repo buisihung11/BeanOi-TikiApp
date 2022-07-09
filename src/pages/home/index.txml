@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 <variant-01 banners="{{banners}}" campaigns="{{campaigns}}" status="{{status}}" headerType="{{headerType}}"
  suppliers="{{suppliers}}" />
   <supplier-list status="{{status}}"
    suppliers="{{suppliers}}"
 
    />
+=======
+<variant-01 locations="{{locations}}" banners="{{banners}}" campaigns="{{campaigns}}" status="{{status}}"
+  headerType="{{headerType}}" stores="{{stores}}" suppliers="{{suppliers}}" />
+>>>>>>> master
 <sticky-bottom />

@@ -2,10 +2,21 @@ Component({
   props: {
     type: "FULL",
     stores: "",
-    onTimeSelect() {},
+    onTimeSelect(e) {},
+    onLocationChange(e) {},
+    idx: 0,
   },
 
-  onTimeSelect(e) {
-    this.props.onTimeSelect(e);
+  methods: {
+    onTimeSelect(e) {
+      this.props.onTimeSelect(e);
+    },
+    onLocationChange(e) {
+      // console.log("arrayObject", e.detail.value);
+      // this.setData({
+      //   idx: e.detail.value,
+      // });
+      this.props.onLocationChange(e);
+    },
   },
 });

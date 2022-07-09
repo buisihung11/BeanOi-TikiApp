@@ -11,6 +11,13 @@ export const getUserToken = () => async (dispatch) => {
   });
 };
 
+export const setUserInfo = (userInfo) => async (dispatch) => {
+  dispatch({
+    type: c.SET_USER_INFO,
+    payload: userInfo,
+  });
+};
+
 export const refreshUserToken = () => async (dispatch) => {
   const data = await refreshToken();
   const status = data ? c.SUCCESS : c.FAILURE;

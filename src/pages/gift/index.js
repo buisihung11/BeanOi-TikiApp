@@ -1,21 +1,35 @@
 import { navigateTo } from "../../helper";
+import { $page } from "@tiki.vn/redux-miniprogram-bindings";
+import { removeGift, sendGift, resetGift } from "../../store/actions/gift";
 
-Page({
+$page({
+  mapState: [
+    (state) => ({
+      selectedGifts: state.gift.selectedGifts,
+      isProcessingSendGift: state.gift.isProcessingSendGift,
+    }),
+  ],
+  mapDispatch: { removeGift, sendGift, resetGift },
+})({
   data: {
-    gifts: [
-      {
-        id: 1,
-        src: "/assets/product_3.png",
-      },
-    ],
+    selectedGifts: [],
+    customerPhone: null,
+    note: null,
+  },
+  async onSubmit(e) {
+    await this.sendGift(e.detail.value);
+    
+  },
+  onInputChange(e) {
+    console.log(e);
   },
   navigateToGiftList() {
-    navigateTo('gift-list')
+    navigateTo("gift-list");
   },
-  onRemoveGift(e) {
-    // TODO: Remove gift
+  async onRemoveGift(e) {
     const { productId } = e.target.dataset;
     console.log("Remove e", productId);
+    await this.removeGift(productId);
   },
   onLoad(query) {},
   onReady() {},
