@@ -1,9 +1,18 @@
 import { navigateTo } from "../../helper";
+import { createParty, joinParty } from "../../store/actions/party";
+import { $component } from "@tiki.vn/redux-miniprogram-bindings";
 
-Component({
-  props: {
-    status: "LOADING",
-  },
+$component({
+  mapState: [
+    (state) => ({
+      status: state.store.status,
+    }),
+  ],
+  mapDispatch: { createParty, joinParty },
+})({
+  // props: {
+  //   status: "LOADING",
+  // },
   data: {
     orderMethods: [
       {
@@ -25,7 +34,7 @@ Component({
       navigateTo("online-reservation");
     },
     onReservationsListSelect() {
-      navigateTo("reservations");
+      this.createParty();
     },
     onLeftButtonClick() {
       navigateTo("reservations");
