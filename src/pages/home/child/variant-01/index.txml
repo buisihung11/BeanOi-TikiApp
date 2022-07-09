@@ -2,7 +2,7 @@
   <header locations="{{locations}}" onTimeSelect="onTimeSelect" type="{{headerType}}" stores="{{stores}}" selectedTimeSlot="{{selectedTimeSlot}}"
     onLocationChange="onLocationChange" idx={{idx}} />
   <!-- <banner status="{{status}}" banners="{{banners}}" /> -->
-  <view class="mt-large px-medium">
+  <view class="mt-large px-medium" style="padding-top: 50px;">
     <order-methods status="{{status}}" />
   </view>
   <!-- <view class="font-bold ml-medium text-medium mt-large"> Cửa hàng

@@ -1,13 +1,13 @@
 <template name="DEFAULT">
-  <view class="c-header">
-    <view class="header items-center p-medium">
+  <view class="c-header" >
+    <view class="header items-center p-medium" style="margin-bottom: 50px;">
       <!-- <view class="mr-small">
         <view class="img-container">
           <image src="/assets/location_icon.png" />
         </view>
       </view> -->
       <view>
-        <view class=" flex items-center">
+        <view class=" flex items-center" > 
           <view class="mr-small">
             <view class="img-container">
               <image src="/assets/location_icon.png" />
