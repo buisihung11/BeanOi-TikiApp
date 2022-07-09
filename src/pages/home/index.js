@@ -1,10 +1,8 @@
 import { getData } from "../../services";
 import apiStores from "../../services/stores";
 import apiSuppliers from "../../services/supplier";
-import { $page } from "@tiki.vn/redux-miniprogram-bindings";
 
-import { getAllStore, changeDefaultStore } from "../../store/actions/store";
-import { navigateTo } from "../../helper";
+
 // Page
 Page({
   data: {
@@ -60,4 +58,5 @@ Page({
         headerType: "SCROLLED",
       });
   },
+
 });

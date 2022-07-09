@@ -15,15 +15,16 @@
 
 <template name="SUCCESS">
   <view class="address-card flex justify-between border-box bg-white"
-        data-id="{{id}}">
+        data-id="{{id}}"  data-title="{{title}}">
     <view class="mr-x-small">
       <view class="img-container">
-        <image src="{{iconsList[iconLeft]}}" />
+        <image src="https://i.ibb.co/ydrQnJG/store-info.png" />
       </view>
     </view>
     <view class="flex justify-between items-center content-wrapper border-box">
       <view onTap="onSelect"
-            data-id="{{id}}"
+            data-id="{{id}}" data-title="{{title}}"
+     
             class="content {{iconRight ? '' : ' full'}}">
         <view class=" font-{{weight}} text-gray100 truncate">
           {{title}}
@@ -37,12 +38,7 @@
           {{subTitle}}
         </view>
       </view>
-      <view tiki:if="{{iconRight}}"
-            onTap="onIconRightSelect">
-        <image mode="aspectFit"
-               class="icon"
-               src="{{iconsList[iconRight]}}" />
-      </view>
+     
     </view>
   </view>
 </template>
