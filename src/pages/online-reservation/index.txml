@@ -8,8 +8,7 @@
         <address-card />
       </view>
       <view class="flex mt-medium">
-        <view style="width: 80px;"
-              class="mr-medium">
+        <view style="width: 80px;" class="mr-medium">
           <view class="skeleton skeleton-font-medium w-50 mb-4x-small" />
           <view>
             <view class="skeleton h-input" />
@@ -26,13 +25,11 @@
       <view class="mt-medium">
         <view class="skeleton skeleton-font-medium w-50 mb-4x-small" />
         <view class="flex time-container hide-scroll">
-          <view tiki:for="{{[1, 2, 3, 4]}}"
-                class="skeleton radius-16px mr-2x-small time-select"
-                style="width: 80px; height: 32px" />
+          <view tiki:for="{{[1, 2, 3, 4]}}" class="skeleton radius-16px mr-2x-small time-select"
+            style="width: 80px; height: 32px" />
         </view>
       </view>
-      <button class="w-full mt-medium skeleton"
-              shape="pill" />
+      <button class="w-full mt-medium skeleton" shape="pill" />
       <view>
       </view>
     </view>
@@ -43,46 +40,49 @@
   <view class="reservation-page">
     <view class="header relative">
       <view class="gradient absolute" />
-      <image src="/assets/reservation.png"
-             mode="aspectFill" />
+      <image src="/assets/reservation.png" mode="aspectFill" />
     </view>
     <view class="form p-medium bg-white w-full border-box">
-      <compact-variant tiki:if="{{variant !== 'LOOSE'}}"
-                       selected="{{selected}}"
-                       timeList="{{timeList}}"
-                       store="{{store}}"
-                       onReserve="onReserve"
-                       onTimeSelect="onTimeSelect"
-                       onDateSelect="onDateSelect"
-                       onStoreSelect="onStoreSelect"
-                       onNumberPeopleSelect="onNumberPeopleSelect" />
-      <loose-variant tiki:else
-                     selected="{{selected}}"
-                     timeList="{{timeList}}"
-                     store="{{store}}"
-                     onReserve="onReserve"
-                     onTimeSelect="onTimeSelect"
-                     onDateSelect="onDateSelect"
-                     onStoreSelect="onStoreSelect"
-                     onNumberPeopleSelect="onNumberPeopleSelect" />
-      <view class="android-padding-bottom ">
-        <button class="w-full mt-medium"
-                shape="pill"
-                onTap="onReserve">
-          Reserve this table
-        </button>
-        <view class="text-center text-brand mt-small"
-              onTap="onSupportSelect">
-          Call booking support
+      <form onSubmit="onSubmit">
+        <view class="flex flex-col mb-x-large">
+          <label class="flex flex-col">
+            <text class="font-bold mb-3x-small">Mã Party</text>
+            <input type="text" name="party-code" placeholder="Vui lòng nhập Mã Party" />
+          </label>
         </view>
-      </view>
+        <!-- <view class="flex flex-col mb-x-small">
+          <label class="flex flex-col">
+            <text class="font-bold mb-3x-small">Quà tặng 🎁</text>
+            <view class="flex flex-nowrap">
+              <block tiki:for="{{selectedGifts}}">
+                <template is="gift-item" data="{{...item, onRemoveGift}}" />
+              </block>
+              <view style="width: 60px; height: 60px" onTap="navigateToGiftList"
+                class=" add-gift-btn border-dotted border-solid radius-pill text-center relative border border-brand flex items-center justify-center">
+                <view>
+                  <icon size="35" type="plus" />
+                </view>
+              </view>
+            </view>
+          </label>
+        </view> -->
+        <!-- <view class="flex flex-col mb-x-small">
+          <label class="flex flex-col">
+            <text class="font-bold mb-3x-small">Lời nhắn</text>
+            <textarea name="note" placeholder="Gửi lời nhắn tới người nhận nhé" />
+          </label>
+        </view> -->
+        <!-- <button loading="{{isProcessingSendGift}}" formType="submit" style="width: 100%">Tặng ngay</button> -->
+
+        <view class="android-padding-bottom ">
+          <button class="w-full mt-medium" shape="pill" onTap="onReserve">
+            Tham gia Party
+          </button>
+        </view>
+      </form>
     </view>
   </view>
 </template>
 
-<c-navbar title="Find table"
-          titleColor="white"
-          bgColor="transparent"
-          btnColor="white" />
-<template is="{{status}}"
-          data="{{store, selected, timeList, variant}}" />
+<c-navbar title="Tìm Party" titleColor="black" bgColor="transparent" btnColor="white" />
+<template is="{{status}}" data="{{store, selected, timeList, variant}}" />
