@@ -9,7 +9,13 @@
     </view>
   </view>
 </view>
-
+<view tiki:elif="{{user && needRegister}}"
+  class="h-full flex  spacey-2x-small flex-col flex-grow items-center justify-center text-center"
+  style="height: 100vh;">
+  <view>Vui lòng nhập SDT nhé</view>
+  <input type="tel" onInput="onChangePhone" />
+  <button onTap="registerUser" class="border-pill">Lưu</button>
+</view>
 <view tiki:else class="profile-page px-medium">
   <header type="{{headerType}}" />
   <view class="point mt-medium">

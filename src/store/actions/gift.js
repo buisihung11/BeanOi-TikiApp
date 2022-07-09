@@ -48,6 +48,13 @@ export const sendGift = (receiverInfo) => async (dispatch, getState) => {
         content: res.error.message ? res.error.message : "Có lỗi xảy ra",
       });
     } else {
+      await dispatch(resetGift());
+
+      // my.setTabBarBadge({
+      //   index: 1,
+      //   text: 3,
+      // });
+
       my.showToast({
         type: "success",
         content: "Tặng quà thành công",

@@ -18,11 +18,7 @@ $page({
   },
   async onSubmit(e) {
     await this.sendGift(e.detail.value);
-    await this.resetGift();
-    this.setData({
-      customerPhone: null,
-      note: null,
-    });
+    
   },
   onInputChange(e) {
     console.log(e);
