@@ -104,7 +104,7 @@
                        />
         <address-card 
                       title="Vào lúc"
-                      address="{{timeSlot}}"
+                      address="{{timeSlot[0] + `-` + timeSlot[1]}}"
                       status="{{status}}"
                       iconRight="clock"
                 />
@@ -176,6 +176,13 @@
       </view>
     </view>
   </view>
+  <button class="w-full font-medium font-regular radius-10px mt-2x-small"
+  style="justify-content: center; align-items: center;"
+  onTap="onDone">
+<!-- Pay {{priceFormat(cart.total + cart.shippingFee - cart.coupon.value)}} -->
+Ok
+<image src="/assets/Bin ok.png" style=" width: 30px; height: 100%;" />
+</button>
   <store-support store="{{order.store}}"
                  isShow="{{isShowModal}}"
                  onClose="onHideModal" />

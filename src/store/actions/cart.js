@@ -88,7 +88,7 @@ export const checkoutCart = () => async (dispatch, getState) => {
     data: res,
   });
   navigateTo("order-detail", { orderId });
-  dispatch(resetCart());
+  // dispatch(resetCart());
 };
 
 const buildPrepareCart = (orderState) => {

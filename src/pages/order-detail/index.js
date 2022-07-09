@@ -3,7 +3,9 @@ import { $page } from "@tiki.vn/redux-miniprogram-bindings";
 import { queryToObj } from "../../helper";
 import { constants as c } from "../../constants";
 import { getOrderById } from "../../store/actions/order";
-import  apiOrders  from "../../services/order/index";
+import { resetCart } from "../../store/actions/cart";
+import apiOrders from "../../services/order/index";
+import { navigateTo } from "../../helper";
 
 $page({
   mapState: [
@@ -11,10 +13,10 @@ $page({
       storeLocation: state.store.selectedLocation,
       timeSlot: state.store.selectedTimeSlot,
       products: state.cart.products,
-      checkoutRes: state.cart.checkoutRes
+      checkoutRes: state.cart.checkoutRes,
     }),
   ],
-  mapDispatch: { getOrderById },
+  mapDispatch: { getOrderById, resetCart },
 })({
   data: {
     status: c.LOADING,
@@ -50,7 +52,7 @@ $page({
     console.log(this.data.timeSlot);
     console.log(this.data.storeLocation);
     my.setNavigationBar({ title: `Đơn hàng ${orderId}` });
-    my.set
+    my.set;
     // await this.getOrderById(orderId);
     this.setData({
       status: c.SUCCESS,
@@ -61,11 +63,15 @@ $page({
     // this.setData({
     //   isShowModal: true,
     // });
-    my.navigateToMiniProgram("https://www.facebook.com/beanoivn")
+    my.navigateToMiniProgram("https://www.facebook.com/beanoivn");
   },
   onHideModal() {
     this.setData({
       isShowModal: false,
     });
+  },
+  onDone() {
+    this.resetCart();
+    navigateTo("home");
   },
 });
