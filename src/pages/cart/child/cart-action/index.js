@@ -12,8 +12,9 @@ Component({
     onResetCoupon() {
       this.props.onResetCoupon();
     },
-    onPay() {
-      this.props.onPay();
+    onCheckout() {
+      // this.props.onPay();
+      console.log(this.props.cart);
     },
   },
 });

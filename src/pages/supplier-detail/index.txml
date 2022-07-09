@@ -62,12 +62,14 @@
 
 <template name="SUCCESS">
   <view class="supplier-detail-page">
+   
     <!-- <buyer-address-card tiki:if="{{orderMethod === 'DELIVERY'}}"
                         buyer="{{buyer.defaultAddress}}"
                         store="{{store}}" />
     <store-address-card tiki:if="{{orderMethod === 'STORE_PICKUP'}}"
                         address="{{store.address}}" /> -->
     <view class="main-view">
+      <view class="supplier-title text-bold text-center text-medium">{{supplierName}}</view>
       <!-- <scroll-view class="categories scroll-{{orderMethod.toLowerCase()}} {{cart.total ? 'with-cart' : ''}}"
                    scroll-y="{{true}}">
         <view onTap="onTagClick"
@@ -100,4 +102,4 @@
 </template>
 
 <template is="{{status}}"
-          data="{{status, cart, supProList, buyer, store, holderStatus}}" />
+          data="{{supplierName, status, cart, supProList, buyer, store, holderStatus}}" />

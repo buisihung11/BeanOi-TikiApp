@@ -25,7 +25,6 @@ $page({
 })
 ({
   data: {
-    detail:{},
     total: 0,
     note: '',
     number: 1,
@@ -43,10 +42,10 @@ $page({
    
     // await this.getProductInfo(id);
     const detail = await getProductDetails(productId);
-    console.log(detail);
+   
     const systemInfo = await myx.getSystemInfo();
     this.setData({
-      // ...initData(this.data.info.data),
+      ...initData(detail),
       status: c.SUCCESS,
       // orderMethod: method,
       screenHeight: systemInfo.screenHeight,

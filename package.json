@@ -1,6 +1,6 @@
 {
   "name": "bean-oi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "tiki": {
     "appIdentifier": "vn.tiki.miniapp.beanoi",
     "buildNumber": 1,

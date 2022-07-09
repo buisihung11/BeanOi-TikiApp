@@ -29,15 +29,17 @@ $page({
     orderMethod: "",
     status: c.LOADING,
     holderStatus: "none",
+  
   },
   async onLoad(query) {
     const supplierId = queryToObj(query).supplierId;
     const supplierName = queryToObj(query).supplierName;
     // await this.getStoreById(id);
     const supProList = await apiProducts.getProductsBySupplierId(supplierId);
-      console.log(supProList);
    
-    let title = supplierName;
+
+
+    let title = "Cửa hàng";
     const orderMethod = queryToObj(query).method;
 
     // if (orderMethod === c.DELIVERY) title = "Delivery";
@@ -55,6 +57,7 @@ $page({
       status: c.SUCCESS,
       orderMethod,
       supProList,
+      supplierName
     });
     // my.addIconsToNavigationBar({
     //   icons: [

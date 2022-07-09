@@ -27,14 +27,14 @@
   <view class="px-medium border-box product-detail-page">
     <product-main-info onToggleFavorite="onToggleFavorite"
     detail="{{detail}}" />
-    <attributes-list attributes="{{product.attributes}}"
-                     onSelectAttribute="onSelectAttribute" />
+    <!-- <attributes-list attributes="{{product.attributes}}"
+                     onSelectAttribute="onSelectAttribute" /> -->
     <view class="my-small bg-white p-medium radius-8px border-box">
       <textarea maxlength="100"
                 onBlur="onTextBlur"
                 onFocus="onTextFocus"
                 onInput="onNoteInput"
-                placeholder="Your note to barista" />
+                placeholder="Ghi chú cho quán nếu bạn cần" />
     </view>
   </view>
   <sticky-bottom>
