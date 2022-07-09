@@ -8,6 +8,7 @@ import store from "./store";
 import product from "./product";
 import category from "./category";
 import reservation from "./reservation";
+import gift from "./gift";
 
 const rootReducer = combineReducers({
   auth,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   product,
   category,
   reservation,
+  gift
 });
 
 export default rootReducer;

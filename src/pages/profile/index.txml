@@ -1,30 +1,40 @@
-<view class="profile-page px-medium">
+<view tiki:if="{{!user}}" class="h-full flex  flex-col flex-grow items-center justify-center text-center"
+  style="height: 100vh;">
+  <view class="flex flex-col spacey-2x-small">
+    <view>
+      Bạn chưa đăng nhập
+    </view>
+    <view class="">
+      <button onTap="onLogin" class="radius-pill">Đăng nhập với Tiki</button>
+    </view>
+  </view>
+</view>
+<view tiki:elif="{{user && needRegister}}"
+  class="h-full flex  spacey-2x-small flex-col flex-grow items-center justify-center text-center"
+  style="height: 100vh;">
+  <view>Vui lòng nhập SDT nhé</view>
+  <input type="tel" onInput="onChangePhone" />
+  <button onTap="registerUser" class="border-pill">Lưu</button>
+</view>
+<view tiki:else class="profile-page px-medium">
   <header type="{{headerType}}" />
   <view class="point mt-medium">
     <view class="img-container">
       <image src="/assets/point.png" />
     </view>
   </view>
-  <view
-    class="p-medium bg-white radius-8px mt-small flex flex-col items-center">
-    <image
-      style="width: 240px; height: 55px"
-      src="/assets/barcode.png"
-    />
+  <view class="p-medium bg-white radius-8px mt-small flex flex-col items-center">
+    <image style="width: 240px; height: 55px" src="/assets/barcode.png" />
     <view class="mt-2x-small">
       42069-69420-42069
     </view>
   </view>
-  <view
-    class="bg-white radius-8px p-medium flex items-center justify-between mt-small"
-    onTap="onPhoneCall"
-  >
+  <view>
+    User info {{user.name}} | {{user.phone}} | {{user.phoneNumber}}
+  </view>
+  <view class="bg-white radius-8px p-medium flex items-center justify-between mt-small" onTap="onPhoneCall">
     <view class="flex items-center">
-      <image
-        src="/assets/support.png"
-        style="height: 40px; width: 40px"
-        class="mr-2x-small"
-      />
+      <image src="/assets/support.png" style="height: 40px; width: 40px" class="mr-2x-small" />
       <view>
         <view>
           Support
@@ -34,11 +44,7 @@
         </view>
       </view>
     </view>
-    <c-icon
-      type="arrow_right"
-      color="gray40"
-      size="{{20}}"
-    />
+    <c-icon type="arrow_right" color="gray40" size="{{20}}" />
   </view>
   <view class="footer text-center py-medium">
     <view class="text-small text-brand">

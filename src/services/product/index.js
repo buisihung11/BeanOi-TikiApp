@@ -4,7 +4,7 @@ import queryString from "query-string";
 
 export const getProductsBySupplierId = async (supplerId) => {
   const stringified = queryString.stringify({
-    timeslot: ["00:00:00", "18:00:00"],
+    timeslot: ["00:00:00", "23:30:00"],
   });
 
   const res = await myx.request({
@@ -20,8 +20,8 @@ export const getProductsBySupplierId = async (supplerId) => {
 
 export const getProductDetails = async (id) => {
   const stringified = queryString.stringify({
-    timeslot: ["00:00:00", "18:00:00"],
-    "store-id": 150, 
+    timeslot: ["00:00:00", "23:30:00"],
+    "store-id": 150,
     "fields": ['ChildProducts', 'CollectionId', 'Extras']
   });
 
