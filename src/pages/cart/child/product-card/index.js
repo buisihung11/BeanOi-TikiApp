@@ -10,21 +10,21 @@ Component({
       this.props.onChangeItemNumber(
         this.props.id,
         1,
-        this.props.product.number
+        this.props.cartItem.number
       );
     },
     onDecrease() {
       this.props.onChangeItemNumber(
         this.props.id,
         -1,
-        this.props.product.number
+        this.props.cartItem.number
       );
     },
     onInput(e) {
       this.props.onChangeItemNumberInput(
         this.props.id,
         e.detail.value,
-        this.props.product.number
+        this.props.cartItem.number
       );
     },
   },

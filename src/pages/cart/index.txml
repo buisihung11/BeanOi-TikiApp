@@ -59,7 +59,7 @@
                     tiki:key="{{item._id}}"
                     status="SUCCESS"
                     id="{{item._id}}"
-                    product="{{item}}"
+                    cartItem="{{item}}"
                     onChangeItemNumber="onChangeItemNumber"
                     onChangeItemNumberInput="onChangeItemNumberInput" />
       <view class="flex justify-between">
