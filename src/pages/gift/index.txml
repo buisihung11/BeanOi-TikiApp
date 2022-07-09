@@ -23,7 +23,7 @@
     <label class="flex flex-col">
       <text class="font-bold mb-3x-small">Qua tang</text>
       <view class="flex flex-nowrap">
-        <block tiki:for="{{gifts}}">
+        <block tiki:for="{{selectedGifts}}">
           <template is="gift-item" data="{{id:item.id,src:item.src}}" />
         </block>
         <view style="width: 60px; height: 60px" onTap="navigateToGiftList"

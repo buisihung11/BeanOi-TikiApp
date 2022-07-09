@@ -1,16 +1,18 @@
 import { navigateTo } from "../../helper";
+import { $page } from "@tiki.vn/redux-miniprogram-bindings";
 
-Page({
+$page({
+  mapState: [
+    (state) => ({
+      selectedGifts: state.gift.selectedGifts,
+    }),
+  ],
+})({
   data: {
-    gifts: [
-      {
-        id: 1,
-        src: "/assets/product_3.png",
-      },
-    ],
+    selectedGifts: [],
   },
   navigateToGiftList() {
-    navigateTo('gift-list')
+    navigateTo("gift-list");
   },
   onRemoveGift(e) {
     // TODO: Remove gift
