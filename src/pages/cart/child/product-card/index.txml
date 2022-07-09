@@ -22,17 +22,17 @@
   <view class="product-card flex">
     <view class="mr-2x-small">
       <view class="img-container circle">
-        <image src="{{product.image}}" />
+        <image src="{{product.product.pic_url}}" default-source="/assets/order.png"  />
       </view>
     </view>
     <view class="info">
-      <view class="font-bold">
-        {{product.name}}
+      <view class="font-medium">
+        {{cartItem.product.product_name}}
       </view>
-      <view tiki:for="{{product.selectedAttributes}}"
+      <!-- <view tiki:for="{{cartItem.product.selectedAttributes}}"
             class="text-small text-gray60 my-4x-small">
         {{item.name}}: {{item.values}}
-      </view>
+      </view> -->
       <view class="font-bold mb-4x-small">
         {{priceFormat(product.total * product.number)}}
       </view>
@@ -53,7 +53,8 @@
           <button onTap="onIncrease"
                   type="outline"
                   iconName="plus"
-                  shape="circle" />
+                  shape="circle" 
+                  />
         </view>
       </view>
     </view>

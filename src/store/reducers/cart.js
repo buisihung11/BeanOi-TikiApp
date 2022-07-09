@@ -5,11 +5,10 @@ import { constants as c } from '../../constants';
 const initialState = {
   total: 0,
   buyer: {},
+  shippingFee: 5000,
+  // orderMethod: c.DELIVERY,
   products: [],
-  shippingFee: 15000,
-  orderMethod: c.DELIVERY,
-  products: [],
-  shippingFee: 15000,
+  shippingFee: 5000,
   coupon: {
     status: c.NONE,
     value: 0,
@@ -19,6 +18,7 @@ const initialState = {
     min: '00',
   },
   date: 'Today',
+  prepareCart:[]
 };
 
 export default function cart(state = initialState, action) {
@@ -28,7 +28,7 @@ export default function cart(state = initialState, action) {
     case c.CHANGE_ITEM_NUMBER_IN_CART:
       return handleChangeCartItemNumber(
         state,
-        action.orderMethod,
+        // action.orderMethod,
         action._id,
         action.value,
       );
@@ -40,6 +40,8 @@ export default function cart(state = initialState, action) {
       return handleChangePickupTime(state, action);
     case c.RESET_CART:
       return handleResetCart(state, action.orderMethod);
+    case c.PREPARE_CART:
+      return handlePrepareCart(state, action.data);
     default:
       return state;
   }
@@ -47,11 +49,11 @@ export default function cart(state = initialState, action) {
 
 function handleAddCart(curState, data) {
   let newState = clone(curState);
-  if (newState.orderMethod !== data.orderMethod) {
-    newState.products = [];
-    newState.total = 0;
-  }
-  newState.orderMethod = data.orderMethod;
+  // if (newState.orderMethod !== data.orderMethod) {
+  //   newState.products = [];
+  //   newState.total = 0;
+  // }
+  // newState.orderMethod = data.orderMethod;
 
   newState.total += data.total;
 
@@ -63,11 +65,11 @@ function handleAddCart(curState, data) {
     };
     newState.shippingFee = 0;
   } else {
-    newState.shippingFee = 15000;
+    newState.shippingFee = 5000;
   }
 
   const preIndex = newState.products.findIndex((v) =>
-    deepEqual(v, data, ['number', 'total', '_id', 'orderMethod']),
+    deepEqual(v, data, ['number', 'total', '_id']),
   );
 
   if (preIndex !== -1) newState.products[preIndex].number += data.number;
@@ -97,8 +99,9 @@ function getPickupTime() {
   };
 }
 
-function handleChangeCartItemNumber(curState, orderMethod, _id, value) {
+function handleChangeCartItemNumber(curState, _id, value) {
   const index = curState.products.findIndex((v) => v._id === _id);
+  // console.log(_id);
   if (index === -1) return curState;
 
   let newState = clone(curState);
@@ -133,5 +136,13 @@ function handleChangePickupTime(curState, { time, date }) {
 function handleResetCart(curState, orderMethod) {
   let newState = clone(curState);
   newState = initialState;
+  return newState;
+}
+
+function handlePrepareCart(curState, data) {
+  let newState = clone(curState);
+ 
+  newState.prepareCart = data;
+  console.log( newState);
   return newState;
 }

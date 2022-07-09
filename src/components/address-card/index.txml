@@ -17,8 +17,11 @@
   <view class="address-card flex justify-between border-box bg-white"
         data-id="{{id}}"  data-title="{{title}}">
     <view class="mr-x-small">
-      <view class="img-container">
-        <image src="https://i.ibb.co/ydrQnJG/store-info.png" />
+      <view class="img-container" tiki:if="{{iconRight}}">
+        <image src="/assets/clock_icon.png" />
+      </view>
+      <view class="img-container" tiki:else>
+        <image src="/assets/location_icon.png" />
       </view>
     </view>
     <view class="flex justify-between items-center content-wrapper border-box">

@@ -28,31 +28,31 @@
   <view class="cart-page px-medium pt-medium">
     <view class="text-medium font-bold mb-2x-small"
           onTap="">
-      {{cart.orderMethod === 'DELIVERY' ? 'Shipping details' :'Pickup details'}}
+      Thông tin người nhận
     </view>
     <view class="p-medium radius-8px bg-white">
       <address-card status="SUCCESS"
-                    title="{{cart.orderMethod === 'DELIVERY' ? 'From store' : 'Pick up location'}}"
+                    title="Nơi nhận"
                     address="{{store.address}}" />
       <view class="line border border-solid border-gray20 my-2x-small" />
-      <address-card tiki:if="{{cart.orderMethod === 'DELIVERY'}}"
+      <!-- <address-card 
                     title="To"
                     status="SUCCESS"
                     iconRight="next"
                     iconLeft="location"
                     address="{{buyer.addressText}}"
                     onSelect="onBuyerAddressSelect"
-                    subTitle="{{`${buyer.name} • ${buyer.phone}`}}" />
-      <address-card tiki:if="{{cart.orderMethod !== 'DELIVERY'}}"
+                    subTitle="{{`${buyer.name} • ${buyer.phone}`}}" /> -->
+      <address-card 
                     status="SUCCESS"
                     iconRight="next"
                     iconLeft="clock"
-                    title="Pickup time"
+                    title="Vào lúc"
                     onSelect="onShowTimeSelect"
                     address="{{`${cart.time.hour}:${cart.time.min}, ${cart.date}`}}" />
     </view>
     <view class="text-medium font-bold mt-medium mb-2x-small">
-      Order details
+      Chi tiết đơn hàng
     </view>
     <view class="p-medium radius-8px bg-white mb-medium">
       <product-card tiki:for="{{cart.products}}"
@@ -64,27 +64,27 @@
                     onChangeItemNumberInput="onChangeItemNumberInput" />
       <view class="flex justify-between">
         <view class="">
-          Price
+          Tạm tính
         </view>
         <view class="font-bold">
-          {{priceFormat(cart.total)}}
+          {{priceFormat(cart.prepareCart.total_amount)}}
         </view>
       </view>
-      <view tiki:if="{{cart.orderMethod === 'DELIVERY'}}"
+      <view tiki:for="{{cart.prepareCart.other_amounts}}"
             class="flex justify-between mt-medium">
         <view class="flex items-center">
           <view class="mr-4x-small">
-            Shipping fee
+          {{item.name}}
           </view>
-          <icon type="warning"
+          <!-- <icon type="warning"
                 size="14"
-                color="#808089" />
+                color="#808089" /> -->
         </view>
         <view class="font-bold">
-          {{priceFormat(cart.shippingFee)}}
+          {{priceFormat(item.amount)}}
         </view>
       </view>
-      <view tiki:if="{{cart.coupon.value}}"
+      <!-- <view tiki:if="{{cart.coupon.value}}"
             class="flex justify-between mt-medium">
         <view class="mr-4x-small">
           Promotion
@@ -92,13 +92,13 @@
         <view class="font-bold text-green">
           - {{priceFormat(cart.coupon.value)}}
         </view>
-      </view>
-      <view class="flex justify-between mt-medium">
-        <view class="">
-          Total
+      </view> -->
+      <view class="flex justify-between mt-medium ">
+        <view class="font-bold">
+          Tổng cộng
         </view>
         <view class="font-bold">
-          {{priceFormat(cart.total + cart.shippingFee - cart.coupon.value)}}
+          {{priceFormat(cart.prepareCart.final_amount)}}
         </view>
       </view>
     </view>
@@ -107,14 +107,14 @@
                onResetCoupon="onResetCoupon"
                onShowCouponInput="onShowCouponInput"
                onPay="onShowPaymentResultSelect" />
-  <coupon-input isShow="{{isShowCouponInput}}"
+  <!-- <coupon-input isShow="{{isShowCouponInput}}"
                 onClose="onHideCouponInput"
-                onApplyCoupon="onApplyCoupon" />
-  <time-select tiki:if="{{cart.orderMethod !== 'DELIVERY'}}"
+                onApplyCoupon="onApplyCoupon" /> -->
+  <!-- <time-select tiki:if="{{cart.orderMethod !== 'DELIVERY'}}"
                isShow="{{isShowTimeSelect}}"
                onClose="onHideTimeSelect"
-               onTimeSelect="onChangeTimePickup"
-               base="{{hour: cart.time.hour, min: cart.time.min}}" />
+               onTimeSelect="onChangeTimePickup" 
+               base="{{hour: cart.time.hour, min: cart.time.min}}" />-->
   <c-modal isShow="{{currentModal === 'remove_confirm'}}"
            headerContent="Confirmation"
            description="Do you want to remove this product from your cart?"

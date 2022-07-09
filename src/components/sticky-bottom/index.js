@@ -9,8 +9,10 @@ $component({
   ],
 })({
   methods: {
+
     onTap() {
-      navigateTo('cart', { orderMethod: this.props.orderMethod });
+      // navigateTo('cart', { orderMethod: this.props.orderMethod });
+      navigateTo('cart' );
     },
   },
 });
