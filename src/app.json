@@ -9,6 +9,7 @@
     "pages/stores-list",
     "pages/new-address",
     "pages/store-detail",
+    "pages/supplier-detail",
     "pages/order-detail",
     "pages/edit-address",
     "pages/store-search",

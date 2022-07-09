@@ -1,5 +1,5 @@
 import { $page } from '@tiki.vn/redux-miniprogram-bindings';
-
+import { getProductDetails } from "../../services/product";
 import {
   getProductInfo,
   toggleFavoriteProduct,
@@ -18,11 +18,12 @@ import {
 $page({
   mapState: [
     (state) => ({
-      info: state.product.info,
+      currentTimeSlot: state.store.selectedTimeSlot,
     }),
   ],
   mapDispatch: { addCart, getProductInfo, toggleFavoriteProduct },
-})({
+})
+({
   data: {
     total: 0,
     note: '',
@@ -37,14 +38,18 @@ $page({
   },
 
   async onLoad(query) {
-    const { method, id } = queryToObj(query);
-    await this.getProductInfo(id);
+    const { productId } = queryToObj(query);
+   
+    // await this.getProductInfo(id);
+    const detail = await getProductDetails(productId, this.data.currentTimeSlot);
+   
     const systemInfo = await myx.getSystemInfo();
     this.setData({
-      ...initData(this.data.info.data),
+      ...initData(detail),
       status: c.SUCCESS,
-      orderMethod: method,
+      // orderMethod: method,
       screenHeight: systemInfo.screenHeight,
+      detail
     });
   },
   onShow() {

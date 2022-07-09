@@ -16,7 +16,7 @@
   <view class="flex pb-medium product-card" onTap="onSelect">
     <view class="mr-medium">
       <view class="img-container">
-        <image src="{{product.pic_url}}" default-source="/assets/product_3.png" />
+        <image src="{{product.pic_url}}" default-source="/assets/product_4.png" />
       </view>
     </view>
     <view>
@@ -24,9 +24,9 @@
         {{product.product_name}}
       </view>
       <view class="text-gray100 font-bold">
-        {{product_type_id === PRODUCT_TYPES.GIFT ? product.price : priceFormat(product.basePrice)}}
+        {{product.product_type_id == 12 ? product.price : priceFormat(product.price)}}
         <view class="inline pl-4x-small">
-          {{product_type_id === PRODUCT_TYPES.GIFT ? "bean" : ""}}
+          {{product.product_type_id == 12 ? "bean" : ""}}
         </view>
       </view>
       <!-- <view tiki:if="{{!product.available}}"

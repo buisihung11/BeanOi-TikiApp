@@ -2,25 +2,32 @@
             name="{priceFormat}"></import-sjs>
 
 <view class="bg-white radius-8px border-box w-full">
-  <detail-carousel items="{{info.images}}" />
+  
+  <!-- <detail-carousel items="{{detail.pic_url}}" /> -->
+  <image src="{{detail.pic_url}}" default-source="/assets/bg_store_pickup_completed.png" style="height: 250px; width: 100%;"></image>
   <view class="px-medium pt-small pb-medium">
+    <view class="text-medium text-left pb-50 font-medium text-gray100">
+      {{detail.product_name}}
+    </view>
     <view class="flex justify-between items-center">
       <view>
-        <view class="text-medium font-regular text-gray100">
-          {{info.name}}
-        </view>
-        <view class="text-base font-bold text-gray100">
-          {{priceFormat(info.price)}}
+        
+        <view class="text-large font-bold text-gray100 ">
+          {{priceFormat(detail.price)}}
         </view>
       </view>
-      <view class="like-btn"
+      <!-- <view class="like-btn"
             onTap="onToggleFavorite">
         <image class=""
                src="{{info.isFavorite ? '/assets/heart_icon.png' : '/assets/heart.png'}}" />
-      </view>
+      </view> -->
     </view>
+    
     <view class="text-small font-regular text-gray60 mt-2x-small">
-      {{info.description}}
+      {{detail.description}}
     </view>
+  </view>
+  <view class="text-small text-right font-regular text-gray60 mt-2x-small">
+    {{detail.supplier_name}}
   </view>
 </view>

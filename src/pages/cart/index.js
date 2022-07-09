@@ -9,6 +9,7 @@ import {
   applyCoupon,
   changeItemNumber,
   changePickupTime,
+  checkoutCart
 } from "../../store/actions/cart";
 
 $page({
@@ -21,6 +22,7 @@ $page({
   ],
   mapDispatch: {
     resetCart,
+    checkoutCart,
     getBuyerInfo,
     getAllStore,
     applyCoupon,
@@ -37,7 +39,7 @@ $page({
     isShowCouponInput: false,
   },
   async onLoad(query) {
-    my.setNavigationBar({ title: "Cart" });
+    my.setNavigationBar({ title: "Giỏ hàng" });
 
     await this.getBuyerInfo();
     await this.getAllStore();
@@ -98,16 +100,16 @@ $page({
       });
       return;
     }
-    this.changeItemNumber(this.data.orderMethod, id, value + current);
+    this.changeItemNumber( id, value + current);
   },
   onChangeItemNumberInput(id, value, current, ref) {
     let number = Number(value);
     number = !number ? 1 : number;
     number = number > 99 ? 99 : number;
-    this.changeItemNumber(this.data.orderMethod, id, number);
+    this.changeItemNumber( id, number);
   },
   async onConfirmDelete() {
-    this.changeItemNumber(this.data.orderMethod, this.data.currentItem, 0);
+    this.changeItemNumber( this.data.currentItem, 0);
     this.setData({
       showModal: false,
       currentModal: "",
@@ -134,4 +136,7 @@ $page({
   onShowTimeSelect() {
     this.setData({ isShowTimeSelect: true });
   },
+  onCheckout(){
+    this.checkoutCart(this.data.cart);
+  }
 });

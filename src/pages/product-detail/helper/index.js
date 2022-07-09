@@ -1,23 +1,22 @@
 export const initData = (data) => {
-  let selectedAttributes = data.attributes.reduce((pre, v) => {
-    pre[v._id] = v.default;
-    return pre;
-  }, {});
-
+  // let selectedAttributes = data.attributes.reduce((pre, v) => {
+  //   pre[v._id] = v.default;
+  //   return pre;
+  // }, {});
   return {
     number: 1,
     additionalFee: 0,
     total: data.price,
-    selectedAttributes,
+    // selectedAttributes,
     product: {
       ...data,
-      attributes: updateAttributes(data.attributes, selectedAttributes),
+      // attributes: updateAttributes(data.attributes, selectedAttributes),
     },
   };
 };
 
-export const changeProductNumber = (info, v) => {
-  let rs = { ...info };
+export const changeProductNumber = (detail, v) => {
+  let rs = { ...detail };
   rs.number = v;
   rs.total = updateTotal(rs);
   return rs;
@@ -47,8 +46,9 @@ export const updateAdditionalFee = (attrs) => {
   return rs;
 };
 
-export const updateTotal = (info) => {
-  let rs = (info.product.price + info.additionalFee) * info.number;
+export const updateTotal = (detail) => {
+  // let rs = (info.product.price + info.additionalFee) * info.number;
+  let rs = (detail.product.price) * detail.number;
   return rs;
 };
 
@@ -78,25 +78,26 @@ export const handleAttributeSelect = (info, aId, vId) => {
 };
 
 export const createDataToAddCart = (data) => {
-  const selectedAttributes = data.product.attributes.reduce((pre, v) => {
-    if (
-      !data.selectedAttributes[v._id] ||
-      !data.selectedAttributes[v._id].length
-    )
-      return pre;
-    pre.push({
-      name: v.name,
-      values: v.values.filter((v) => v.checked).map((v) => v.name),
-    });
-    return pre;
-  }, []);
+  // const selectedAttributes = data.product.attributes.reduce((pre, v) => {
+  //   if (
+  //     !data.selectedAttributes[v._id] ||
+  //     !data.selectedAttributes[v._id].length
+  //   )
+  //     return pre;
+  //   pre.push({
+  //     name: v.name,
+  //     values: v.values.filter((v) => v.checked).map((v) => v.name),
+  //   });
+  //   return pre;
+  // }, []);
   return {
     note: data.note,
     total: data.total,
-    selectedAttributes,
+    // selectedAttributes,
     number: data.number,
-    name: data.product.name,
-    image: data.product.avatar,
-    orderMethod: data.orderMethod,
+    // name: data.product.product_name,
+    // image: data.product.pic_url,
+    product: data.product
+    // orderMethod: data.orderMethod,
   };
 };

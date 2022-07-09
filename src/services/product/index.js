@@ -2,13 +2,13 @@ import myx from "../../helper/myx";
 import { BASE_URL, VIRTUAL_STORE_TYPE } from "../../utils/config";
 import queryString from "query-string";
 
-export const getProductsBySupplierId = async (supplerId) => {
+export const getProductsBySupplierId = async (supplierId, currentTimeslot) => {
   const stringified = queryString.stringify({
-    timeslot: ["00:00:00", "23:30:00"],
+    timeslot: currentTimeslot,
   });
 
   const res = await myx.request({
-    url: `${BASE_URL}/stores/${150}/suppliers/${supplerId}/products?${stringified}`,
+    url: `${BASE_URL}/stores/${150}/suppliers/${supplierId}/products?${stringified}`,
     headers: {
       "Content-type": "application/json",
     },
@@ -18,15 +18,15 @@ export const getProductsBySupplierId = async (supplerId) => {
   return res.data;
 };
 
-export const getProductDetails = async (id) => {
+export const getProductDetails = async (id, currentTimeslot) => {
   const stringified = queryString.stringify({
-    timeslot: ["00:00:00", "23:30:00"],
+    timeslot: currentTimeslot,
     "store-id": 150,
     "fields": ['ChildProducts', 'CollectionId', 'Extras']
   });
 
   const res = await myx.request({
-    url: `${BASE_URL}'/products/${id}?${stringified}`,
+    url: `${BASE_URL}/products/${id}?${stringified}`,
     headers: {
       "Content-type": "application/json",
     },

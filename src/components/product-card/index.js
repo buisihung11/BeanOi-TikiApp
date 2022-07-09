@@ -1,3 +1,5 @@
+import {navigateTo} from "../../helper"
+
 Component({
   props: {
     product: {},
@@ -6,7 +8,7 @@ Component({
   },
   methods: {
     onSelect() {
-      console.log('on selecct');
+      console.log('on select');
       this.props.onSelect(this.props.product);
     },
   },

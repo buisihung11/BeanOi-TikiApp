@@ -54,7 +54,7 @@
           <button size="small"
                   shape="pill"
                   onTap="onShowModal">
-            Contact support
+            Liên hệ hỗ trợ
           </button>
         </view>
         <view tiki:if="{{order.status === 'READY' || order.status === 'COMPLETED'}}"
@@ -70,22 +70,22 @@
         </view>
       </view>
       <view class="mt-medium mb-2x-small font-bold">
-        General info
+        Thông tin đơn hàng
       </view>
       <view class="px-medium py-large bg-white radius-8px">
         <view class="w-full flex justify-between">
           <view>
-            <view>Order ID</view>
+            <view>Mã đơn</view>
             <view class="text-small text-gray60"
                   tiki:if="{{order.orderMethod === 'STORE_PICKUP'}}">
-              For picking up at store
+              Lấy tại
             </view>
           </view>
           <view class="font-bold">{{order._id}}</view>
         </view>
         <view class="line border-gray20 border-solid my-2x-small" />
         <view class="w-full flex justify-between">
-          <view>Order date</view>
+          <view>Vào lúc</view>
           <view class="font-bold">{{order.date}}, {{order.time}}</view>
         </view>
       </view>

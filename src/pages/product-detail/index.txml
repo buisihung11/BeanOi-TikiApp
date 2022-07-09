@@ -26,15 +26,15 @@
 <template name="SUCCESS">
   <view class="px-medium border-box product-detail-page">
     <product-main-info onToggleFavorite="onToggleFavorite"
-                       info="{{...product}}" />
-    <attributes-list attributes="{{product.attributes}}"
-                     onSelectAttribute="onSelectAttribute" />
+    detail="{{detail}}" />
+    <!-- <attributes-list attributes="{{product.attributes}}"
+                     onSelectAttribute="onSelectAttribute" /> -->
     <view class="my-small bg-white p-medium radius-8px border-box">
       <textarea maxlength="100"
                 onBlur="onTextBlur"
                 onFocus="onTextFocus"
                 onInput="onNoteInput"
-                placeholder="Your note to barista" />
+                placeholder="Ghi chú cho quán nếu bạn cần" />
     </view>
   </view>
   <sticky-bottom>
@@ -51,4 +51,4 @@
 
 <c-navbar bgColor="" />
 <template is="{{status}}"
-          data="{{product, number, total, cart, orderMethod, isHideOrderMessage, paddingStatus}}"></template>
+          data="{{detail, product, number, total, cart, orderMethod, isHideOrderMessage, paddingStatus}}"></template>

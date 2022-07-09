@@ -1,3 +1,6 @@
-<variant-01 locations="{{locations}}" banners="{{banners}}" campaigns="{{campaigns}}" status="{{status}}"
+<variant-01 banners="{{banners}}" locations="{{locations}}" campaigns="{{campaigns}}" status="{{status}}"
+  headerType="{{headerType}}"  />
+<supplier-list status="{{status}}" suppliers="{{suppliers}}" />
+<!-- <variant-01 locations="{{locations}}" banners="{{banners}}" campaigns="{{campaigns}}" status="{{status}}"
   headerType="{{headerType}}" stores="{{stores}}" suppliers="{{suppliers}}" />
-<sticky-bottom />
+<sticky-bottom /> -->

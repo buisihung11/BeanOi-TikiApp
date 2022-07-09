@@ -25,7 +25,6 @@ $component({
     banners: [],
     status: "",
     campaigns: [],
-    // suppliers: [],
     selectedLocation: "",
     selectedTime: [],
     idx: 0,
