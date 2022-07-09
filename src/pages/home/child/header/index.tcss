@@ -30,6 +30,26 @@
   position: relative;
 }
 .header .img-container {
-  width: 40px;
+  width: 20px;
   padding-top: 100%;
+}
+.time-container {
+  margin-left: 8px;
+  padding-top: 4px;
+  width: 120vw;
+  flex-wrap: wrap;
+  overflow-x: scroll;
+  padding-bottom: 1px;
+}
+.time-select {
+  padding: 5.5px 14px;
+}
+.time-select.active {
+  color: #1a94ff;
+  border-color: #1a94ff;
+  font-weight: bold;
+  padding: 5px 14px;
+}
+.picker {
+  width: 100%;
 }

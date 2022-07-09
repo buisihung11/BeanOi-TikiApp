@@ -6,6 +6,5 @@
     "address-card": "components/address-card",
     "button": "@tiki.vn/tini-ui/es/tu-button/index",
     "c-navbar": "components/c-navbar"
-  },
-  "transparentTitle": "always"
+  }
 }

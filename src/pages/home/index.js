@@ -1,28 +1,40 @@
-import { getData } from '../../services';
+import { getData } from "../../services";
+import apiStores from "../../services/stores";
+import apiSuppliers from "../../services/supplier";
+import { $page } from "@tiki.vn/redux-miniprogram-bindings";
 
-Page({
-  data: {
-    status: 'LOADING',
-    headerType: 'DEFAULT',
-    campaigns: [1, 2, 3, 4],
-    banners: [1, 2, 3],
-  },
+import {
+  getAllLocations,
+  getAllStore,
+  changeDefaultStore,
+  setTimeSlotAction,
+} from "../../store/actions/store";
+import { navigateTo } from "../../helper";
+// Page
+$page({
+  mapState: [
+    (state) => ({
+      status: state.store.status,
+      headerType: "DEFAULT",
+      campaigns: [1, 2, 3, 4],
+      banners: [1, 2, 3],
+      selectedTimeSlot: state.store.selectedTimeSlot,
+      stores: state.store.stores,
+      locations: state.store.locations,
+      selectedLocation: state.store.selectedLocation,
+      suppliers: state.store.suppliers,
+    }),
+  ],
+  mapDispatch: { getAllStore, changeDefaultStore, getAllLocations },
+})({
   async loadData() {
     try {
-      const [banners, campaigns] = await Promise.all([
-        getData('banners'),
-        getData('campaigns'),
-      ]);
-
-      this.setData({
-        ...this.data,
-        banners,
-        campaigns,
-        status: 'SUCCESS',
-      });
+      await this.getAllStore();
+      await this.getAllLocations();
     } catch (err) {
+      console.log(err);
       this.setData({
-        status: 'FAILURE',
+        status: "FAILURE",
       });
     }
   },
@@ -36,12 +48,12 @@ Page({
     if (e.scrollTop === 0)
       this.setData({
         ...this.data,
-        headerType: 'DEFAULT',
+        headerType: "DEFAULT",
       });
     if (e.scrollTop >= 16)
       this.setData({
         ...this.data,
-        headerType: 'SCROLLED',
+        headerType: "SCROLLED",
       });
   },
 });

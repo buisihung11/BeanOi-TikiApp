@@ -1,5 +1,3 @@
-<variant-01 banners="{{banners}}"
-            campaigns="{{campaigns}}"
-            status="{{status}}"
-            headerType="{{headerType}}" />
+<variant-01 locations="{{locations}}" banners="{{banners}}" campaigns="{{campaigns}}" status="{{status}}"
+  headerType="{{headerType}}" stores="{{stores}}" suppliers="{{suppliers}}" />
 <sticky-bottom />
