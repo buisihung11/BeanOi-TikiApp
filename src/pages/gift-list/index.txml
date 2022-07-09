@@ -13,9 +13,9 @@
 
 <template name="SUCCESS">
   GIFT LIST
-  <!-- <view class="px-medium" tiki:for="{{products}}">
-    <product-card product="{{item}}" onSelect="onProductClick" />
-  </view> -->
+  <view class="px-medium" tiki:for="{{gifts}}">
+    <product-card product="{{item}}" onSelect="onSelectGift" data-gift="{{item}}" />
+  </view>
 </template>
 
-<template is="{{status}}" data="{{status, gifts}}" />
+<template is="{{status}}" data="{{status, gifts, onSelectGift}}" />
