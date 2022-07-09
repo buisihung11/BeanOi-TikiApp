@@ -34,7 +34,7 @@ $page({
   },
   async onLoad(query) {
     const supplierId = queryToObj(query).supplierId;
-    const supplierName = queryToObj(query).supplierName;
+    const supplierName = queryToObj(query).supplierName.split("+").join(" ");
     // await this.getStoreById(id);
     const supProList = await apiProducts.getProductsBySupplierId(supplierId, this.data.currentTimeSlot);
    

@@ -2,6 +2,7 @@
             name="{priceFormat}" />
 
 <template name="PRODUCTS_LOADING">
+  <view class="my-large mx-large skeleton skeleton-font-large" />
   <view class="my-small mx-medium skeleton skeleton-font-small" />
   <view tiki:for="{{[1, 2, 3, 4, 5]}}"
         class="flex items-center px-medium pb-medium">
@@ -69,7 +70,7 @@
     <store-address-card tiki:if="{{orderMethod === 'STORE_PICKUP'}}"
                         address="{{store.address}}" /> -->
     <view class="main-view">
-      <view class="supplier-title text-bold text-center text-medium">{{supplierName}}</view>
+      <view class="supplier-title font-bold text-center text-large" style="padding: 10px;">{{supplierName}}</view>
       <!-- <scroll-view class="categories scroll-{{orderMethod.toLowerCase()}} {{cart.total ? 'with-cart' : ''}}"
                    scroll-y="{{true}}">
         <view onTap="onTagClick"

@@ -13,7 +13,7 @@
               <image src="/assets/location_icon.png" />
             </view>
           </view>
-          <view class="text-medium  font-regular text-gray80 mr-small">Nơi nhận : </view>
+          <view class="text-medium  font-regular text-gray80 mr-small p-small">Nơi nhận : </view>
           <view class="component-item">
             <picker range-key="name" range="{{locations}}" value="{{idx}}" onChange="onLocationChange" data-location="{{locations[idx]}}">
               <view class=" picker flex">
@@ -34,7 +34,7 @@
             <image src="/assets/clock_icon.png" />
           </view>
         </view>
-        <view class=" text-medium  font-regular text-gray80 mr-small">Giờ giao hàng : </view>
+        <view class=" text-medium  font-regular text-gray80 mr-small p-small">Giờ giao hàng : </view>
 
       </view>
       <view class="flex time-container border-box hide-scroll">
