@@ -22,7 +22,7 @@
   <view class="product-card flex">
     <view class="mr-2x-small">
       <view class="img-container circle">
-        <image src="{{product.product.pic_url}}" default-source="/assets/order.png"  />
+        <image src="{{cartItem.product.pic_url}}" default-source="/assets/order.png"  />
       </view>
     </view>
     <view class="info">
@@ -34,21 +34,21 @@
         {{item.name}}: {{item.values}}
       </view> -->
       <view class="font-bold mb-4x-small">
-        {{priceFormat(product.total * product.number)}}
+        {{priceFormat(cartItem.total * cartItem.number)}}
       </view>
-      <view tiki:if="{{product.note}}"
+      <view tiki:if="{{cartItem.note}}"
             class="note radius-4px border-box border border-solid border-gray20 text-gray60 text-small p-3x-small">
-        {{product.note}}
+        {{cartItem.note}}
       </view>
       <view class="bg-white py-2x-small flex items-center">
         <view class="flex">
           <button onTap="onDecrease"
                   type="outline"
                   iconName="minus"
-                  disabled="{{product.number < 1}}"
+                  disabled="{{cartItem.number < 1}}"
                   shape="circle" />
           <view class="border border-solid border-gray20 value-container">
-            {{product.number}}
+            {{cartItem.number}}
           </view>
           <button onTap="onIncrease"
                   type="outline"
@@ -64,4 +64,4 @@
 </template>
 
 <template is="{{status}}"
-          data="{{product}}" />
+          data="{{cartItem}}" />

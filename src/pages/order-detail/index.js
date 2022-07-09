@@ -3,7 +3,7 @@ import { $page } from "@tiki.vn/redux-miniprogram-bindings";
 import { queryToObj } from "../../helper";
 import { constants as c } from "../../constants";
 import { getOrderById } from "../../store/actions/order";
-import { apiOrders } from "../../services/order/index";
+import  apiOrders  from "../../services/order/index";
 
 $page({
   // mapState: [
