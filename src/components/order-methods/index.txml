@@ -10,7 +10,7 @@
 
 <template name="SUCCESS">
   <view class="order-methods">
-    <view class="flex bg-white radius-8px w-full border-box items-center px-small py-medium">
+    <!-- <view class="flex bg-white radius-8px w-full border-box items-center px-small py-medium">
       <order-method status="SUCCESS"
         code="STORE_PICKUP"
         title="Store pickup"
@@ -22,7 +22,7 @@
         title="Delivery"
         subTitle="Always on time"
         image="/assets/deliver_1.png" />
-    </view>
+    </view> -->
     <view class="onl-reservation bg-white radius-8px w-full border-box pl-medium mt-small py-medium">
       <view class="flex items-center justify-between">
         <view class="w-50">
