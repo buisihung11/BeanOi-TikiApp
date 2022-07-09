@@ -2,6 +2,7 @@ import { constants as c } from "../../constants";
 
 const initialState = {
   token: null,
+  user: null,
 };
 
 export default function auth(state = initialState, action) {

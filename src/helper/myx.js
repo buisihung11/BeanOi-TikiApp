@@ -13,11 +13,11 @@ class Target {
 
   debug(...params) {
     this.addLogItem({
-      type: 'log',
+      type: "log",
       createdAt: new Date().getTime(),
       params: {
-        input: params.join(' '),
-        result: 'ok',
+        input: params.join(" "),
+        result: "ok",
         latency: 0,
       },
     });
@@ -56,6 +56,7 @@ class Target {
             if (this.config.debugJSAPI) {
               logItem.params.error = error;
             }
+            console.log("request fail", error);
             reject(error);
           },
           complete: () => {

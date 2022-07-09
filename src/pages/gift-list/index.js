@@ -181,15 +181,12 @@ $page({
     ],
   },
   async onSelectGift(gift) {
-    // const {gift} = e.target.dataset;
-    console.log("selected gift", gift);
     await this.selectGift(gift);
+    my.navigateBack();
   },
   async onLoad(query) {
     const app = getApp();
     const gifts = await this.getGiftInMenu();
-
-    // TODO: Save select gift to app state
 
     // TODO: Send request to create gift
   },
