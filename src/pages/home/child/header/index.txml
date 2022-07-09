@@ -1,5 +1,5 @@
 <template name="DEFAULT">
-  <view class="c-header" >
+  <view class="c-header">
     <view class="header items-center p-medium" style="margin-bottom: 50px;">
       <!-- <view class="mr-small">
         <view class="img-container">
@@ -52,7 +52,7 @@
 </template>
 
 <template name="SCROLLED">
-  <view class="c-header">
+  <view class="c-header" style="position:relative; z-index: 99" >
     <view class="header items-center p-medium">
       <!-- <view class="mr-small">
         <view class="img-container">

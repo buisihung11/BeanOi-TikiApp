@@ -12,7 +12,7 @@
 
 <template name="SUCCESS">
   <view class="stores-list ">
-      <view class="text-medium text-center font-bold  " style="position: relative; top: 80px; z-index: 99">
+      <view class="text-medium text-center font-bold  " style="position: relative; top: 80px; z-index: 50">
         Quán ngon hôm nay
       </view>
       <image src="../../assets/talkingbean.png" style="position: relative; width: 80vw; height: 200px; right: -60px; z-index: 2; margin-bottom: -40px;" />
