@@ -1,7 +1,7 @@
 <template name="gift-item">
   <view style="width: 60px; height: 60px" class="radius-pill text-center relative mr-medium">
-    <image src="{{src}}" style="width: 100%; height: 100%" />
-    <view class="absolute" style="bottom: -15%; right: -15%" onTap="onRemoveGift" data-productId="{{id}}">
+    <image src="{{src}}" default-source="/assets/product_3.png" style="width: 100%; height: 100%" />
+    <view class="absolute" style="bottom: -15%; right: -15%" onTap="onRemoveGift" data-productId="{{product_id}}">
       <icon type="close_circle" />
     </view>
   </view>
@@ -10,35 +10,41 @@
 
 
 <view class="stores-list p-medium">
-  <view class="text-medium font-bold mb-2x-small text-center">
-    BeanOi Presents
+  
+  <view class="flex items-center text-center content-center pb-2x-medium" >
+    <image src="/assets/male.png" mode="widthFix" />
+    <view style="font-size: 40px;">💝</view>
+    <image src="/assets/female.png"  mode="widthFix"/>
   </view>
-  <view class="flex flex-col mb-x-small">
-    <label class="flex flex-col">
-      <text class="font-bold mb-3x-small">So dien thoai nguoi nhan</text>
-      <input />
-    </label>
-  </view>
-  <view class="flex flex-col mb-x-small">
-    <label class="flex flex-col">
-      <text class="font-bold mb-3x-small">Qua tang</text>
-      <view class="flex flex-nowrap">
-        <block tiki:for="{{gifts}}">
-          <template is="gift-item" data="{{id:item.id,src:item.src}}" />
-        </block>
-        <view style="width: 60px; height: 60px" onTap="navigateToGiftList"
-          class=" add-gift-btn border-dotted border-solid radius-pill text-center relative border border-brand flex items-center justify-center">
-          <view>
-            <icon size="35" type="plus" />
+  <form onSubmit="onSubmit">
+    <view class="flex flex-col mb-x-small">
+      <label class="flex flex-col">
+        <text class="font-bold mb-3x-small">SDT người nhận</text>
+        <input type="tel" name="phone" placeholder="Vui lòng nhập SDT người nhận" />
+      </label>
+    </view>
+    <view class="flex flex-col mb-x-small">
+      <label class="flex flex-col">
+        <text class="font-bold mb-3x-small">Quà tặng 🎁</text>
+        <view class="flex flex-nowrap">
+          <block tiki:for="{{selectedGifts}}">
+            <template is="gift-item" data="{{...item, onRemoveGift}}" />
+          </block>
+          <view style="width: 60px; height: 60px" onTap="navigateToGiftList"
+            class=" add-gift-btn border-dotted border-solid radius-pill text-center relative border border-brand flex items-center justify-center">
+            <view>
+              <icon size="35" type="plus" />
+            </view>
           </view>
         </view>
-      </view>
-    </label>
-  </view>
-  <view class="flex flex-col mb-x-small">
-    <label class="flex flex-col">
-      <text class="font-bold mb-3x-small">Loi nhan</text>
-      <textarea />
-    </label>
-  </view>
+      </label>
+    </view>
+    <view class="flex flex-col mb-x-small">
+      <label class="flex flex-col">
+        <text class="font-bold mb-3x-small">Lời nhắn</text>
+        <textarea name="note" placeholder="Gửi lời nhắn tới người nhận nhé" />
+      </label>
+    </view>
+    <button loading="{{isProcessingSendGift}}" formType="submit" style="width: 100%">Tặng ngay</button>
+  </form>
 </view>
