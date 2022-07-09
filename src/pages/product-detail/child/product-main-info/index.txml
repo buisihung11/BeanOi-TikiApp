@@ -2,25 +2,25 @@
             name="{priceFormat}"></import-sjs>
 
 <view class="bg-white radius-8px border-box w-full">
-  <detail-carousel items="{{info.images}}" />
+  <detail-carousel items="{{detail.pic_url}}" />
   <view class="px-medium pt-small pb-medium">
     <view class="flex justify-between items-center">
       <view>
         <view class="text-medium font-regular text-gray100">
-          {{info.name}}
+          {{detail.product_name}}
         </view>
         <view class="text-base font-bold text-gray100">
-          {{priceFormat(info.price)}}
+          {{priceFormat(detail.price)}}
         </view>
       </view>
-      <view class="like-btn"
+      <!-- <view class="like-btn"
             onTap="onToggleFavorite">
         <image class=""
                src="{{info.isFavorite ? '/assets/heart_icon.png' : '/assets/heart.png'}}" />
-      </view>
+      </view> -->
     </view>
     <view class="text-small font-regular text-gray60 mt-2x-small">
-      {{info.description}}
+      {{detail.description}}
     </view>
   </view>
 </view>

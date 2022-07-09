@@ -1,12 +1,12 @@
 Component({
   props: {
-    info: {},
-    onToggleFavorite() {},
+    detail: {},
+    // onToggleFavorite() {},
   },
   onInit() {},
   methods: {
-    onToggleFavorite() {
-      this.props.onToggleFavorite();
-    },
+    // onToggleFavorite() {
+    //   this.props.onToggleFavorite();
+    // },
   },
 });

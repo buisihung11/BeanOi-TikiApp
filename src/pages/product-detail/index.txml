@@ -26,7 +26,7 @@
 <template name="SUCCESS">
   <view class="px-medium border-box product-detail-page">
     <product-main-info onToggleFavorite="onToggleFavorite"
-                       info="{{...product}}" />
+    detail="{{detail}}" />
     <attributes-list attributes="{{product.attributes}}"
                      onSelectAttribute="onSelectAttribute" />
     <view class="my-small bg-white p-medium radius-8px border-box">
@@ -51,4 +51,4 @@
 
 <c-navbar bgColor="" />
 <template is="{{status}}"
-          data="{{product, number, total, cart, orderMethod, isHideOrderMessage, paddingStatus}}"></template>
+          data="{{detail, product, number, total, cart, orderMethod, isHideOrderMessage, paddingStatus}}"></template>

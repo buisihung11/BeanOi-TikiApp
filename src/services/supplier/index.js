@@ -4,7 +4,7 @@ import queryString from "query-string";
 
 export const getSuppliers = async () => {
   const stringified = queryString.stringify({
-    timeslot: ["00:00:00", "23:30:00"],
+    timeslot: ["00:00:00", "18:00:00"],
   });
 
   const res = await myx.request({

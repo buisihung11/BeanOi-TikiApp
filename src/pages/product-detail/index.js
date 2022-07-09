@@ -1,5 +1,5 @@
 import { $page } from '@tiki.vn/redux-miniprogram-bindings';
-
+import { getProductDetails } from "../../services/product";
 import {
   getProductInfo,
   toggleFavoriteProduct,
@@ -16,14 +16,16 @@ import {
 } from './helper';
 
 $page({
-  mapState: [
-    (state) => ({
-      info: state.product.info,
-    }),
-  ],
+  // mapState: [
+  //   (state) => ({
+  //     info: state.product.info,
+  //   }),
+  // ],
   mapDispatch: { addCart, getProductInfo, toggleFavoriteProduct },
-})({
+})
+({
   data: {
+    detail:{},
     total: 0,
     note: '',
     number: 1,
@@ -37,14 +39,18 @@ $page({
   },
 
   async onLoad(query) {
-    const { method, id } = queryToObj(query);
-    await this.getProductInfo(id);
+    const { productId } = queryToObj(query);
+   
+    // await this.getProductInfo(id);
+    const detail = await getProductDetails(productId);
+    console.log(detail);
     const systemInfo = await myx.getSystemInfo();
     this.setData({
-      ...initData(this.data.info.data),
+      // ...initData(this.data.info.data),
       status: c.SUCCESS,
-      orderMethod: method,
+      // orderMethod: method,
       screenHeight: systemInfo.screenHeight,
+      detail
     });
   },
   onShow() {

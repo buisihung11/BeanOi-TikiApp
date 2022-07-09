@@ -20,16 +20,16 @@
         id="{{`${item._id}`}}">
     {{name}}
   </view> -->
-  <view class="px-medium"
-        tiki:for="{{products}}">
+  <view class="px-medium"  data-productId="{{item.product_id}}"
+    onTap="onProductClick" >
     <product-card product="{{item}}"
-                  onSelect="onProductClick" />
+    />
   </view>
 </template>
 
 <template name="LOADING">
   <view class="supplier-detail-page">
-    <view class="flex p-medium bg-white border-box">
+    <!-- <view class="flex p-medium bg-white border-box">
       <view>
         <view style="width: 40px; height:40px"
               class="img-container skeleton" />
@@ -38,9 +38,9 @@
         <view class="skeleton skeleton-font-regular skeleton-50-width" />
         <view class="skeleton skeleton-font-small mt-2x-small" />
       </view>
-    </view>
-    <view class="flex">
-      <scroll-view class="categories"
+    </view> -->
+    <view >
+      <!-- <scroll-view class="categories"
                    class="border-box">
         <view class="border-box">
           <view tiki:for="{{[1, 2, 3, 4, 5, 6]}}"
@@ -48,11 +48,11 @@
             <view class="skeleton skeleton-font-small mt-x-large" />
           </view>
         </view>
-      </scroll-view>
+      </scroll-view> -->
       <scroll-view class="scroll"
                    scroll-y="{{true}}">
         <view class="products bg-white"
-              tiki:for="{{[1, 2]}}">
+              tiki:for="{{[1, 6]}}">
           <template is="PRODUCTS_LOADING" />
         </view>
       </scroll-view>
@@ -62,12 +62,12 @@
 
 <template name="SUCCESS">
   <view class="supplier-detail-page">
-    <buyer-address-card tiki:if="{{orderMethod === 'DELIVERY'}}"
+    <!-- <buyer-address-card tiki:if="{{orderMethod === 'DELIVERY'}}"
                         buyer="{{buyer.defaultAddress}}"
                         store="{{store}}" />
     <store-address-card tiki:if="{{orderMethod === 'STORE_PICKUP'}}"
-                        address="{{store.address}}" />
-    <view class="flex main-view">
+                        address="{{store.address}}" /> -->
+    <view class="main-view">
       <!-- <scroll-view class="categories scroll-{{orderMethod.toLowerCase()}} {{cart.total ? 'with-cart' : ''}}"
                    scroll-y="{{true}}">
         <view onTap="onTagClick"
@@ -85,12 +85,12 @@
                    scroll-with-animation="{{true}}">
         <view class="products bg-white"
               tiki:for="{{supProList}}"
-              id="__{{item.product_id}}">
-           
+              id="{{item.product_id}}">
+     
           <template is="PRODUCTS"
-                    data="{{...item}}" />
+                    data="{{item}}" />
         </view>
-        <view class="{{holderStatus}} holder-{{orderMethod.toLowerCase()}} bg-white w-full " />
+        <!-- <view class="{{holderStatus}} holder-{{orderMethod.toLowerCase()}} bg-white w-full " /> -->
       </scroll-view>
     </view>
   </view>
@@ -100,4 +100,4 @@
 </template>
 
 <template is="{{status}}"
-          data="{{status, cart, supProList, categories, currentPos, orderMethod, currentTag, buyer, store, holderStatus}}" />
+          data="{{status, cart, supProList, buyer, store, holderStatus}}" />

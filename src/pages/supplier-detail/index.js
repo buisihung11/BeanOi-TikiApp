@@ -56,16 +56,16 @@ $page({
       orderMethod,
       supProList,
     });
-    my.addIconsToNavigationBar({
-      icons: [
-        {
-          image: "/assets/search_icon.png",
-          width: 24,
-          height: 24,
-        },
-      ],
-      padding: 10,
-    });
+    // my.addIconsToNavigationBar({
+    //   icons: [
+    //     {
+    //       image: "/assets/search_icon.png",
+    //       width: 24,
+    //       height: 24,
+    //     },
+    //   ],
+    //   padding: 10,
+    // });
     // if (!this.data.supProList) {
     //   const supProList = await apiProducts.getProductsBySupplierId(supplierId);
     //   console.log(supProList);
@@ -124,11 +124,12 @@ $page({
   //     target: { id: `_${this.data.categories[0]._id}` },
   //   });
   // },
-  onProductClick(p) {
-    const { _id: id, name } = p;
-    navigateTo("product-detail", { method: this.data.orderMethod, id, name });
+  onProductClick(e) {
+    // const { _id: id, name } = p;
+    const productId = e.target.dataset.productId;
+    navigateTo("product-detail", { method: this.data.orderMethod, productId });
   },
-  onCustomIconEvent(e) {
-    navigateTo("product-search", { method: this.data.orderMethod });
-  },
+  // onCustomIconEvent(e) {
+  //   navigateTo("product-search", { method: this.data.orderMethod });
+  // },
 });
