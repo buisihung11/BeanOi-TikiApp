@@ -45,9 +45,10 @@ $page({
     const res = apiOrders.getOrderById(orderId);
     console.log(res);
     my.setNavigationBar({ title: `Order ${orderId}` });
-    await this.getOrderById(orderId);
+    // await this.getOrderById(orderId);
     this.setData({
       status: c.SUCCESS,
+      order: res,
     });
   },
   onShowModal() {

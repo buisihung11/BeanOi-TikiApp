@@ -81,7 +81,7 @@ export const checkoutCart = () => async (dispatch, getState) => {
   const req = buildCheckoutCart({ products });
   // console.log(req);
   const res = await cartApi.checkOut(req);
-  const orderId = res.orderId;
+  const orderId = res.order_id;
   navigateTo("order-detail", { orderId });
   dispatch(resetCart());
   

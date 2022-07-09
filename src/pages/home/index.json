@@ -5,6 +5,7 @@
     "variant-03": "child/variant-03",
     "variant-04": "child/variant-04",
     "supplier-list": "components/supplier-list",
+    "store-list": "components/store-list",
     "sticky-bottom": "components/sticky-bottom"
   },
   "transparentTitle": "always"

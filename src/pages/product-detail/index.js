@@ -16,11 +16,11 @@ import {
 } from './helper';
 
 $page({
-  // mapState: [
-  //   (state) => ({
-  //     info: state.product.info,
-  //   }),
-  // ],
+  mapState: [
+    (state) => ({
+      currentTimeSlot: state.store.selectedTimeSlot,
+    }),
+  ],
   mapDispatch: { addCart, getProductInfo, toggleFavoriteProduct },
 })
 ({
@@ -41,7 +41,7 @@ $page({
     const { productId } = queryToObj(query);
    
     // await this.getProductInfo(id);
-    const detail = await getProductDetails(productId);
+    const detail = await getProductDetails(productId, this.data.currentTimeSlot);
    
     const systemInfo = await myx.getSystemInfo();
     this.setData({

@@ -17,6 +17,7 @@ $page({
       buyer: state.buyer,
       store: state.store.defaultStore,
       cart: state.cart,
+      currentTimeSlot: state.store.selectedTimeSlot
     }),
   ],
   mapDispatch: { getAllCategories, getBuyerInfo, getAllStore },
@@ -35,7 +36,7 @@ $page({
     const supplierId = queryToObj(query).supplierId;
     const supplierName = queryToObj(query).supplierName;
     // await this.getStoreById(id);
-    const supProList = await apiProducts.getProductsBySupplierId(supplierId);
+    const supProList = await apiProducts.getProductsBySupplierId(supplierId, this.data.currentTimeSlot);
    
 
 

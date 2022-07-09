@@ -15,6 +15,18 @@ Component({
      
      navigateTo("supplier-detail", { supplierId, supplierName });
     },
+    onTimeSelect(e) {
+      const time = e.target.dataset.time;
+      console.log("time", e, time);
+      this.setTimeSlotAction([time.from, time.to]);
+
+    },
+    onLocationChange(e) {
+      this.setData({
+        idx: e.detail.value,
+      });
+      this.setLocationAction(e.detail.value);
+    },
   },
   // didMount() {
   //   this.setData({
