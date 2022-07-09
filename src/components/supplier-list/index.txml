@@ -4,28 +4,22 @@
       <address-card />
     </view>
     <view class="skeleton skeleton-font-medium skeleton-70-width mb-small" />
-    <view tiki:for="{{[1, 2, 3, 4, 5, 6]}}"
-          class="p-medium bg-white mb-small radius-8px">
+    <view tiki:for="{{[1, 2, 3, 4, 5, 6]}}" class="p-medium bg-white mb-small radius-8px">
       <address-card />
     </view>
   </view>
 </template>
 
 <template name="SUCCESS">
-  <view class="stores-list p-medium">
-    <view
-          class="text-medium text-center font-bold mb-2x-small ">
-     Quán ngon hôm nay
-    </view>
-    <image src="/assets/talkingbean.png"  />
-    <view tiki:for="{{suppliers}}"
-          class="p-medium font-bold bg-white mb-small radius-8px">
-      <address-card id="{{item.id}}"
-                    status="SUCCESS"
-                    onSelect="onSelect"
-                    iconLeft="{{item.image_url}}"
-                    title="{{item.name}}"
-                    subTitle="{{item.address}}" />
+  <view class="stores-list ">
+      <view class="text-medium text-center font-bold  " style="position: relative; top: 80px; z-index: 99">
+        Quán ngon hôm nay
+      </view>
+      <image src="../../assets/talkingbean.png" style="position: relative; width: 80vw; height: 200px; right: -60px; z-index: 2; margin-bottom: -40px;" />
+   
+    <view tiki:for="{{suppliers}}" class="p-medium font-bold bg-white mb-small radius-8px">
+      <address-card id="{{item.id}}" status="SUCCESS" onSelect="onSelect" iconLeft="{{item.image_url}}"
+        title="{{item.name}}" subTitle="{{item.address}}" />
     </view>
     <!-- <view tiki:if="{{favorite.length > 0 && other.length > 0}}"
           class="text-medium font-bold mb-2x-small text-center">
@@ -44,5 +38,4 @@
   </view>
 </template>
 
-<template is="{{status}}"
-          data="{{suppliers}}" />
+<template is="{{status}}" data="{{suppliers}}" />

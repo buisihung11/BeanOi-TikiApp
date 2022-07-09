@@ -82,8 +82,12 @@ export const checkoutCart = () => async (dispatch, getState) => {
   // console.log(req);
   const res = await cartApi.checkOut(req);
   const orderId = res.order_id;
+  dispatch({
+    type: c.CHECKOUT_CART,
+    data: res,
+  });
   navigateTo("order-detail", { orderId });
-  dispatch(resetCart());
+  // dispatch(resetCart());
   
 };
 

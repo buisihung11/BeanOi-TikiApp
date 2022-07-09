@@ -26,9 +26,10 @@
            src="/assets/cross_icon.png" />
   </view> -->
   <button class="w-full font-medium font-regular radius-10px mt-2x-small"
-
+          style="justify-content: center; align-items: center;"
           onTap="onCheckout">
     <!-- Pay {{priceFormat(cart.total + cart.shippingFee - cart.coupon.value)}} -->
     Chốt đơn
+    <image src="/assets/Bin ok.png" style=" width: 30px; height: 100%;" />
   </button>
 </view>

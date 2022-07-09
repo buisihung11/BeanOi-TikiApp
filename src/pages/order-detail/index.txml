@@ -42,7 +42,7 @@
   <view class="order-detail pb-medium">
     <view class="header-bg">
       <view class="img-container">
-        <image src="{{bgList[order.orderMethod][order.status]}}" />
+        <image src="/assets/success.png" style="height: 200px; width: 220px; margin:auto"  />
       </view>
     </view>
     <view class="order-info px-medium border-box">
@@ -53,7 +53,8 @@
           </view>
           <button size="small"
                   shape="pill"
-                  onTap="onShowModal">
+                  onTap="onShowModal"
+                  >
             Liên hệ hỗ trợ
           </button>
         </view>
@@ -69,60 +70,58 @@
           </view>
         </view>
       </view>
-      <view class="mt-medium mb-2x-small font-bold">
+      <!-- <view class="mt-medium mb-2x-small font-bold">
         Thông tin đơn hàng
-      </view>
+      </view> -->
       <view class="px-medium py-large bg-white radius-8px">
-        <view class="w-full flex justify-between">
+        <!-- <view class="w-full flex justify-between">
           <view>
             <view>Mã đơn</view>
-            <view class="text-small text-gray60"
-                  tiki:if="{{order.orderMethod === 'STORE_PICKUP'}}">
-              Lấy tại
-            </view>
+            
           </view>
           <view class="font-bold">{{order._id}}</view>
-        </view>
+        </view> -->
         <view class="line border-gray20 border-solid my-2x-small" />
-        <view class="w-full flex justify-between">
+        <!-- <view class="w-full flex justify-between">
           <view>Vào lúc</view>
           <view class="font-bold">{{order.date}}, {{order.time}}</view>
-        </view>
+        </view> -->
       </view>
       <view class="mt-medium mb-2x-small font-bold">
-        Shipping detail
+        Địa điểm
       </view>
       <view class="px-medium py-large bg-white radius-8px">
-        <address-card title="{{order.orderMethod === 'DELIVERY' ? 'From store' : 'Pick up location'}}"
+        <!-- <address-card title="{{order.orderMethod === 'DELIVERY' ? 'From store' : 'Pick up location'}}"
                       address="{{order.store.address}}"
                       iconLeft="{{ order.orderMethod === 'DELIVERY' ?'store' : 'location_blue'}}"
                       status="SUCCESS" />
-        <view class="line border-gray20 border-solid my-2x-small" />
-        <address-card tiki:if="{{order.orderMethod === 'DELIVERY'}}"
-                      title="To"
-                      address="{{order.buyer.address}}"
-                      subTitle="{{order.buyer.name}} • {{order.buyer.phone}}"
+        <view class="line border-gray20 border-solid my-2x-small" /> -->
+        <address-card 
+                      title="Tại"
+                      address="{{storeLocation.name}}"
                       status="{{status}}"
-                      iconLeft="location" />
-        <address-card tiki:if="{{order.orderMethod === 'STORE_PICKUP'}}"
-                      title="Pick up time"
-                      address="{{order.pickupInfo.time.hour}}:{{order.pickupInfo.time.min}}, {{order.pickupInfo.date}}"
+                     
+                       />
+        <address-card 
+                      title="Vào lúc"
+                      address="{{timeSlot}}"
                       status="{{status}}"
-                      iconLeft="clock" />
+                      iconRight="clock"
+                />
       </view>
       <view class="mt-medium mb-2x-small font-bold">
-        Product info
+        Sản phẩm
       </view>
       <view class="bg-white p-medium radius-8px">
         <product-card showLine="{{index < order.products.length -1}}"
-                      tiki:for="{{order.products}}"
+                      tiki:for="{{products}}"
                       product="{{item}}"
                       status="SUCCESS" />
       </view>
-      <view class="mt-medium mb-2x-small font-bold">
+      <!-- <view class="mt-medium mb-2x-small font-bold">
         Payment info
-      </view>
-      <view class="flex items-center payment bg-white p-medium radius-8px">
+      </view> -->
+      <!-- <view class="flex items-center payment bg-white p-medium radius-8px">
         <view class="mr-2x-small">
           <view class="img-container">
             <image src="{{order.paymentMethod.image}}" />
@@ -136,28 +135,28 @@
             {{order.paymentMethod.name}}
           </view>
         </view>
-      </view>
+      </view> -->
       <view class="bg-white radius-8px p-medium mt-2x-small">
         <view class="flex justify-between">
           <view>
-            Price
+            Tạm tính
           </view>
           <view class="font-bold">
-            {{priceFormat(order.price)}}
+            {{priceFormat(checkoutRes.total_amount)}}
           </view>
         </view>
-        <view class="flex justify-between mt-medium">
+        <view class="flex justify-between mt-medium" tiki:for="{{checkoutRes.other_amounts}}">
           <view class="flex items-center">
-            <view class="mr-4x-small">Shipping fee</view>
+            <view class="mr-4x-small">{{item.name}}</view>
             <c-icon type="warning"
                     size="{{14}}"
                     color="gray60" />
           </view>
           <view class="font-bold">
-            {{priceFormat(order.shippingFee)}}
+            {{priceFormat(item.amount)}}
           </view>
         </view>
-        <view tiki:if="{{order.promotion}}"
+        <!-- <view tiki:if="{{order.promotion}}"
               class="flex justify-between mt-medium">
           <view>
             Promotion
@@ -165,13 +164,13 @@
           <view class="font-bold text-green">
             - {{priceFormat(order.promotion)}}
           </view>
-        </view>
-        <view class="flex justify-between mt-medium">
+        </view> -->
+        <view class="flex justify-between mt-medium font-bold">
           <view>
-            Total
+            Tổng cộng
           </view>
           <view class="font-bold">
-            {{priceFormat(order.total)}}
+            {{priceFormat(checkoutRes.final_amount)}}
           </view>
         </view>
       </view>
@@ -183,4 +182,4 @@
 </template>
 
 <template is="{{status}}"
-          data="{{bgList, order: info.data, status, statusTitle, isShowModal}}" />
+          data="{{timeSlot, storeLocation,checkoutRes, bgList, products, status, statusTitle, isShowModal}}" />

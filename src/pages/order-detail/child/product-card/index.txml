@@ -25,17 +25,17 @@
   <view class="product-card flex">
     <view class="mr-2x-small">
       <view class="img-container circle">
-        <image src="{{product.image}}" />
+        <image src="{{product.product.pic_url}}" default-source="/assets/order.png" />
       </view>
     </view>
     <view class="info">
       <view class="font-bold">
-        {{product.name}}
+        {{product.product.product_name}}
       </view>
-      <view tiki:for="{{product.selectedAttributes}}"
+      <!-- <view tiki:for="{{product.selectedAttributes}}"
             class="text-small text-gray60 my-4x-small">
         {{getAttributeText(item)}}
-      </view>
+      </view> -->
       <view class="text-small text-gray60  mb-4x-small">
         {{priceFormat(product.total)}} x {{product.number}}
       </view>

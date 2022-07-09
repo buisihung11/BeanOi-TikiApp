@@ -9,6 +9,7 @@ const initialState = {
   shippingFee: 5000,
   orderMethod: c.DELIVERY,
   prepareCart: [],
+  checkoutRes:[],
   shippingFee: 5000,
   coupon: {
     status: c.NONE,
@@ -42,6 +43,8 @@ export default function cart(state = initialState, action) {
       return handleResetCart(state);
     case c.PREPARE_CART:
       return handlePrepareCart(state, action.data);
+    case c.CHECKOUT_CART:
+      return handleCheckoutCart(state, action.data);
     default:
       return state;
   }
@@ -141,5 +144,11 @@ function handleResetCart(curState) {
 function handlePrepareCart(curState, data) {
   let newState = clone(curState);
   newState.prepareCart = data;
+  return newState;
+}
+
+function handleCheckoutCart(curState, data) {
+  let newState = clone(curState);
+  newState.checkoutRes = data;
   return newState;
 }

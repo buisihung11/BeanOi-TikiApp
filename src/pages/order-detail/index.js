@@ -6,12 +6,15 @@ import { getOrderById } from "../../store/actions/order";
 import  apiOrders  from "../../services/order/index";
 
 $page({
-  // mapState: [
-  //   (state) => ({
-  //     info: state.order.info,
-  //   }),
-  // ],
-  // mapDispatch: { getOrderById },
+  mapState: [
+    (state) => ({
+      storeLocation: state.store.selectedLocation,
+      timeSlot: state.store.selectedTimeSlot,
+      products: state.cart.products,
+      checkoutRes: state.cart.checkoutRes
+    }),
+  ],
+  mapDispatch: { getOrderById },
 })({
   data: {
     status: c.LOADING,
@@ -41,10 +44,13 @@ $page({
   },
   async onLoad(query) {
     const orderId = queryToObj(query).orderId;
-    console.log(orderId);
     const res = apiOrders.getOrderById(orderId);
     console.log(res);
-    my.setNavigationBar({ title: `Order ${orderId}` });
+    console.log(this.data.checkoutRes);
+    console.log(this.data.timeSlot);
+    console.log(this.data.storeLocation);
+    my.setNavigationBar({ title: `Đơn hàng ${orderId}` });
+    my.set
     // await this.getOrderById(orderId);
     this.setData({
       status: c.SUCCESS,
@@ -52,9 +58,10 @@ $page({
     });
   },
   onShowModal() {
-    this.setData({
-      isShowModal: true,
-    });
+    // this.setData({
+    //   isShowModal: true,
+    // });
+    my.navigateToMiniProgram("https://www.facebook.com/beanoivn")
   },
   onHideModal() {
     this.setData({
