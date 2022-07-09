@@ -1,8 +1,14 @@
-import { constants as c } from '../../constants';
-import { clone } from '../../helper';
+import { constants as c } from "../../constants";
+import { clone } from "../../helper";
 
 const inititalState = {
+  status: c.LOADING,
   defaultStore: null,
+  stores: [],
+  selectedTimeSlot: null,
+  suppliers: [],
+  selectedLocation: null,
+  locations: [],
   info: {
     data: {},
     status: c.LOADING,
@@ -18,11 +24,32 @@ export default function store(state = inititalState, action) {
     case c.GET_ALL_STORE:
       return {
         ...state,
-        list: {
-          data: action.data,
-          status: c.SUCCESS,
-        },
-        defaultStore: action.data[0],
+        stores: action.payload,
+        status: c.SUCCESS,
+        defaultStore: action.payload[0],
+        selectedTimeSlot: action.selectedTimeSlot,
+      };
+    case "GET_ALL_SUPPLIER":
+      return {
+        ...state,
+        suppliers: action.payload,
+      };
+
+    case "GET_ALL_LOCATION":
+      return {
+        ...state,
+        locations: action.payload,
+        selectedLocation: action.location,
+      };
+    case "SET_TIME_SLOT":
+      return {
+        ...state,
+        selectedTimeSlot: action.selectedTimeSlot,
+      };
+    case "SET_LOCATION":
+      return {
+        ...state,
+        selectedLocation: action.location,
       };
     case c.GET_STORE_INFO:
       return handleGetStoreInfo(state, action);

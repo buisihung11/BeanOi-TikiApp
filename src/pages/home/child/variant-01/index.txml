@@ -1,7 +1,7 @@
 <view>
-  <header type="{{headerType}}", stores="{{stores}}" />
-  <banner status="{{status}}"
-          banners="{{banners}}" />
+  <header locations="{{locations}}" onTimeSelect="onTimeSelect" type="{{headerType}}" stores="{{stores}}" selectedTimeSlot="{{selectedTimeSlot}}"
+    onLocationChange="onLocationChange" idx={{idx}} />
+  <!-- <banner status="{{status}}" banners="{{banners}}" /> -->
   <view class="mt-large px-medium">
     <order-methods status="{{status}}" />
   </view>
@@ -9,7 +9,5 @@
   </view> -->
   <!-- <campaigns-list status="{{status}}"
                   campaigns="{{campaigns}}" /> -->
-   <stores-list status="{{status}}"
-   suppliers="{{suppliers}}"
-   onSelect="onStoreSelect" />
+  <stores-list status="{{status}}" suppliers="{{suppliers}}" onSelect="onStoreSelect" />
 </view>

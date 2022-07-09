@@ -1,10 +1,11 @@
-import { setProvider } from '@tiki.vn/redux-miniprogram-bindings';
+import { setProvider } from "@tiki.vn/redux-miniprogram-bindings";
 
-import store from './store';
+import store from "./store";
 
-setProvider({ component2: true, store, namespace: '' });
+setProvider({ component2: true, store, namespace: "" });
 
 App({
+  globalData: [],
   onLaunch(options) {},
   onShow(options) {},
 });

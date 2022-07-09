@@ -1,11 +1,62 @@
-import { constants as c } from '../../constants';
-import { getData } from '../../services';
+import { constants as c } from "../../constants";
+import { getData } from "../../services";
+import apiStores from "../../services/stores";
+import apiSuppliers from "../../services/supplier";
 
 export const getAllStore = () => async (dispatch) => {
-  const data = await getData('stores');
+  const stores = await apiStores.getStores();
+  console.log(stores);
+  console.log("timeslot", stores.time_slots[0].from, stores.time_slots[0].to);
   dispatch({
     type: c.GET_ALL_STORE,
-    data,
+    payload: stores,
+    // TODO: Set default time slot
+    selectedTimeSlot: [stores.time_slots[0].from, stores.time_slots[0].to],
+  });
+
+  dispatch(getSuppliersAction());
+};
+
+export const getAllLocations = () => async (dispatch) => {
+  const list = await apiStores.getLocations();
+  console.log("locations", list[0].locations);
+  dispatch({
+    type: "GET_ALL_LOCATION",
+    payload: list[0].locations,
+    location: list[0].locations[0],
+  });
+  dispatch(getSuppliersAction());
+};
+
+// TODO: setTimeSlotAction
+export const setTimeSlotAction = (currentTimeSlot) => async (dispatch) => {
+  dispatch({
+    type: "SET_TIME_SLOT",
+    selectedTimeSlot: currentTimeSlot,
+  });
+  dispatch(getSuppliersAction());
+};
+
+export const setLocationAction = (idx) => async (dispatch) => {
+  const list = await apiStores.getLocations();
+  console.log("currentLocation", list[0].locations[idx]);
+  dispatch({
+    type: "SET_LOCATION",
+    location: list[0].locations[idx],
+  });
+  dispatch(getSuppliersAction());
+};
+
+export const getSuppliersAction = () => async (dispatch, getState) => {
+  const {
+    store: { selectedTimeSlot },
+  } = getState();
+  console.log("TimeSLOT", selectedTimeSlot);
+  const suppliers = await apiSuppliers.getSuppliers(selectedTimeSlot);
+  console.log("supplierrr", suppliers);
+  dispatch({
+    type: "GET_ALL_SUPPLIER",
+    payload: suppliers,
   });
 };
 
