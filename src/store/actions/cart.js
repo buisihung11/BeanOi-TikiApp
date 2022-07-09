@@ -1,6 +1,7 @@
 import { constants as c } from "../../constants";
 import { getDataInstant } from "../../services";
 import cartApi from "../../services/cart/index";
+import apiParty from "../../services/party/index";
 import { navigateTo } from "../../helper";
 
 export const addCart = (data) => (dispatch) => {
@@ -84,7 +85,6 @@ export const checkoutCart = () => async (dispatch, getState) => {
   const orderId = res.order_id;
   navigateTo("order-detail", { orderId });
   dispatch(resetCart());
-  
 };
 
 const buildPrepareCart = (orderState) => {
@@ -119,4 +119,72 @@ const buildCheckoutCart = (orderState, customer) => {
       quantity: cartItem.number,
     })),
   };
+};
+
+export const createParty = () => async (dispatch) => {
+  try {
+    const res = await apiParty.createParty();
+    if (res.error && res.error.code >= 400) {
+      my.showToast({
+        type: "fail",
+        content: res.error.message ? res.error.message : "Có lỗi xảy ra",
+      });
+    } else {
+      my.showToast({
+        type: "success",
+        content: "Tạo party thành công",
+      });
+      console.log("cart res", res.data);
+      dispatch({
+        type: c.PROCESSING_CREATE_PARTY,
+        payload: true,
+        data: res.data,
+      });
+    }
+  } catch (error) {
+    my.showToast({
+      type: "fail",
+      content: "Có lỗi xảy ra",
+    });
+    console.log(error);
+  } finally {
+    dispatch({
+      type: c.PROCESSING_CREATE_PARTY,
+      payload: false,
+    });
+  }
+};
+
+export const joinParty = () => async (dispatch) => {
+  // TODO: Send gift
+  try {
+    const res = await apiParty.joinParty();
+    if (res.error && res.error.code >= 400) {
+      my.showToast({
+        type: "fail",
+        content: res.error.message ? res.error.message : "Có lỗi xảy ra",
+      });
+    } else {
+      my.showToast({
+        type: "success",
+        content: "Tham gia party thành công",
+      });
+      dispatch({
+        type: c.PROCESSING_JOIN_PARTY,
+        payload: true,
+        data : res.data
+      });
+    }
+  } catch (error) {
+    my.showToast({
+      type: "fail",
+      content: "Có lỗi xảy ra",
+    });
+    console.log(error);
+  } finally {
+    dispatch({
+      type: c.PROCESSING_JOIN_PARTY,
+      payload: false,
+    });
+  }
 };
