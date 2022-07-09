@@ -1,0 +1,44 @@
+<template name="gift-item">
+  <view style="width: 60px; height: 60px" class="radius-pill text-center relative mr-medium">
+    <image src="{{src}}" style="width: 100%; height: 100%" />
+    <view class="absolute" style="bottom: -15%; right: -15%" onTap="onRemoveGift" data-productId="{{id}}">
+      <icon type="close_circle" />
+    </view>
+  </view>
+
+</template>
+
+
+<view class="stores-list p-medium">
+  <view class="text-medium font-bold mb-2x-small text-center">
+    BeanOi Presents
+  </view>
+  <view class="flex flex-col mb-x-small">
+    <label class="flex flex-col">
+      <text class="font-bold mb-3x-small">So dien thoai nguoi nhan</text>
+      <input />
+    </label>
+  </view>
+  <view class="flex flex-col mb-x-small">
+    <label class="flex flex-col">
+      <text class="font-bold mb-3x-small">Qua tang</text>
+      <view class="flex flex-nowrap">
+        <block tiki:for="{{gifts}}">
+          <template is="gift-item" data="{{id:item.id,src:item.src}}" />
+        </block>
+        <view style="width: 60px; height: 60px" onTap="navigateToGiftList"
+          class=" add-gift-btn border-dotted border-solid radius-pill text-center relative border border-brand flex items-center justify-center">
+          <view>
+            <icon size="35" type="plus" />
+          </view>
+        </view>
+      </view>
+    </label>
+  </view>
+  <view class="flex flex-col mb-x-small">
+    <label class="flex flex-col">
+      <text class="font-bold mb-3x-small">Loi nhan</text>
+      <textarea />
+    </label>
+  </view>
+</view>

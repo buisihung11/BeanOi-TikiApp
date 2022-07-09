@@ -1,9 +1,7 @@
-<import-sjs from="../../helper/index.sjs"
-            name="{priceFormat}" />
+<import-sjs from="../../helper/index.sjs" name="{priceFormat}" />
 
 <template name="LOADING">
-  <view class="flex items-center pb-medium product-card"
-        onTap="onSelect">
+  <view class="flex items-center pb-medium product-card" onTap="onSelect">
     <view class="mr-medium">
       <view class="img-container skeleton" />
     </view>
@@ -15,27 +13,28 @@
 </template>
 
 <template name="SUCCESS">
-  <view class="flex pb-medium product-card"
-        onTap="onSelect">
+  <view class="flex pb-medium product-card" onTap="onSelect">
     <view class="mr-medium">
       <view class="img-container">
-        <image src="{{product.avatar}}" />
+        <image src="{{product.pic_url}}" default-source="/assets/product_3.png" />
       </view>
     </view>
     <view>
-      <view class="text-{{product.available ? 'gray100' : 'disabled'}} mb-4x-small">
-        {{product.name}}
+      <view class="text-gray100 mb-4x-small">
+        {{product.product_name}}
       </view>
-      <view class="text-{{product.available ? 'gray100' : 'disabled'}} font-bold">
-        {{priceFormat(product.price)}}
+      <view class="text-gray100 font-bold">
+        {{product_type_id === PRODUCT_TYPES.GIFT ? product.price : priceFormat(product.basePrice)}}
+        <view class="inline pl-4x-small">
+          {{product_type_id === PRODUCT_TYPES.GIFT ? "bean" : ""}}
+        </view>
       </view>
-      <view tiki:if="{{!product.available}}"
+      <!-- <view tiki:if="{{!product.available}}"
             class="text-x-small mt-4x-small">
         Not available at this store
-      </view>
+      </view> -->
     </view>
   </view>
 </template>
 
-<template is="{{status}}"
-          data="{{product}}" />
+<template is="{{status}}" data="{{product}}" />

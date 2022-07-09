@@ -1,0 +1,21 @@
+<template name="LOADING">
+  <view class="my-small mx-medium skeleton skeleton-font-small" />
+  <view tiki:for="{{[1, 2, 3, 4, 5]}}" class="flex items-center px-medium pb-medium">
+    <view class="mr-medium">
+      <view class="img-container skeleton" />
+    </view>
+    <view class="w-full">
+      <view class="mb-4x-small skeleton skeleton-font-small skeleton-50-width" />
+      <view class="skeleton skeleton-font-regular" />
+    </view>
+  </view>
+</template>
+
+<template name="SUCCESS">
+  GIFT LIST
+  <view class="px-medium" tiki:for="{{gifts}}">
+    <product-card product="{{item}}" onSelect="onSelectGift" data-gift="{{item}}" />
+  </view>
+</template>
+
+<template is="{{status}}" data="{{status, gifts, onSelectGift}}" />

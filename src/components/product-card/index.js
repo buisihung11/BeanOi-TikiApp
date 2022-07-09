@@ -6,9 +6,8 @@ Component({
   },
   methods: {
     onSelect() {
-      if (this.props.product.available) {
-        this.props.onSelect(this.props.product);
-      }
+      console.log('on selecct');
+      this.props.onSelect(this.props.product);
     },
   },
 });

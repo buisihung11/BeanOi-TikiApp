@@ -1,5 +1,12 @@
 @import '@tiki.vn/tini-style/es/index.tcss';
 @import './style/skeleton.tcss';
+
+/* OVERRIDE BRAND COLOR */
+
+:root {
+  --color-alias-brand: #5ad493;
+}
+
 .border-box {
   box-sizing: border-box;
 }
